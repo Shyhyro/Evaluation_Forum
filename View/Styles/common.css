@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 62.5%;
+}
+
+/* Font */
+#bodyDiv {
+    font-family: Arial, sans-serif;
+}
+
+#bodyDiv, input, button {
+    font-size: 1.2rem;
+}
+
+/* Width */
+#bodyDiv {
+    width: 100%;
+}
+
+/* Height */
+#bodyDiv {
+    height: 100%;
+}
+
+/* Display */
+#header_logIn_Logout, #header_Logout, #header_Register {
+    display: flex;
+    flex-direction: column;
+}
+
+#header_Logout, #header_Register {
+    align-items: center;
+}
+
+/* Padding */
+h1, #header_logIn_Logout {
+    padding: 20px 0;
+}
+
+/* --- Header --- */
+header {
+    text-align: center;
+    background-color: lightblue;
+}
+
+#header_logIn_Logout {
+    background-color: whitesmoke;
+}
+
+#header_Logout, #header_Register {
+    display: none;
+}
+
+
+
+/* --- Input / Button --- */
+input, button {
+    margin: 5px 25px;
+    border: none;
+}
+
+input {
+    padding: 5px 10px;
+    background-color: lightblue;
+}
+
+button {
+    padding: 5px 20px;
+    background-color: lightskyblue;
+}
+
+button:hover {
+    background-color: lightsalmon;
+}
