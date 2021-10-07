@@ -56,7 +56,42 @@ header {
     display: none;
 }
 
+/* --- Container --- */
+#container {
+    background-color: white;
+}
 
+.section_1 {
+    background-color: whitesmoke;
+    margin: 50px 50px;
+    box-shadow: lightgray 0 0 25px;
+}
+
+.section_1 button {
+    float: right;
+    position: relative;
+    top: -45px;
+}
+
+.section_1 .category, .section_1 .subjects, .section_1 .subject, .subject p {
+    padding: 20px;
+}
+
+.section_1 .category {
+    background-color: lightblue;
+}
+
+.section_1 .subject {
+    margin: 30px 0;
+    background-color: white;
+}
+
+/* --- Footer --- */
+footer {
+    padding: 20px 10px;
+    background-color: lightblue;
+    text-align: center;
+}
 
 /* --- Input / Button --- */
 input, button {
@@ -65,15 +100,16 @@ input, button {
 }
 
 input {
-    padding: 5px 10px;
+    padding: 10px 10px;
     background-color: lightblue;
 }
 
 button {
-    padding: 5px 20px;
+    padding: 10px 30px;
     background-color: lightskyblue;
 }
 
 button:hover {
+    cursor: pointer;
     background-color: lightsalmon;
 }
