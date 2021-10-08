@@ -4,16 +4,16 @@
 class Token
 {
     private ?int $id;
-    private ?User $user_fk;
+    private ?int $user_fk;
     private ?string $token;
 
     /**
      * Token constructor.
      * @param int|null $id
-     * @param User|null $user_fk
+     * @param int|null $user_fk
      * @param string|null $token
      */
-    public function __construct(int $id = null, User $user_fk = null, string $token = null)
+    public function __construct(int $id = null, int $user_fk = null, string $token = null)
     {
         $this->id = $id;
         $this->user_fk = $user_fk;
@@ -30,21 +30,22 @@ class Token
     }
 
     /**
-     * Get user Fk of Token
-     * @return User|null
+     * Get user_fk of Token
+     * @return int|null
      */
-    public function getUserFk(): ?User
+    public function getUserFk(): ?int
     {
         return $this->user_fk;
     }
 
     /**
-     * Set user Fk of Token
-     * @param User|null $user_fk
+     * Set user_fk of Token
+     * @param false|int|null $user_fk
      */
-    public function setUserFk(?User $user_fk): void
+    public function setUserFk($user_fk): Token
     {
         $this->user_fk = $user_fk;
+        return $this;
     }
 
     /**

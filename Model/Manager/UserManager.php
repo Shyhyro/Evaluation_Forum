@@ -12,7 +12,8 @@ class UserManager
 
         if($stmt->execute() && $userDatas = $stmt->fetchAll()) {
             foreach ($userDatas as $userData) {
-                $array[] = new User($userData['id'], $userData['username'], $userData['password']);
+                $array[] = new User($userData['id'], $userData['statut'], $userData['registration'], $userData['username'], $userData['password'],
+                    $userData['email'], $userData['role_fk']);
             }
         }
         return $array;
@@ -30,7 +31,8 @@ class UserManager
         $state = $stmt->execute();
         if($state && $userData = $stmt->fetch())
         {
-            $user = new User($userData['id'], $userData['username'], $userData['password']);
+            $user = new User($userData['id'], $userData['statut'], $userData['registration'], $userData['username'], $userData['password'],
+                $userData['email'], $userData['role_fk']);
         }
         else
         {

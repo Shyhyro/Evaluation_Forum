@@ -17,4 +17,18 @@ class TokenManager
 
         return $stmt->execute();
     }
+
+    /**
+     * Search a token of user
+     * @param $userId
+     * @return bool
+     */
+    public function searchToken($userId) :bool
+    {
+        $stmt = Database::getInstance()->prepare("SELECT * FROM token WHERE user_fk = :userId ");
+
+        $stmt->bindValue(':userId', $userId);
+
+        return $stmt->execute();
+    }
 }

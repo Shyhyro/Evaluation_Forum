@@ -6,8 +6,8 @@ class Subject
     private ?int $id;
     private ?int $statut;
     private ?string $registration;
-    private ?User $user_fk;
-    private ?Category $category_fk;
+    private ?int $user_fk;
+    private ?int $category_fk;
     private ?string $name;
     private ?string $description;
     private ?string $content;
@@ -17,14 +17,14 @@ class Subject
      * @param int|null $id
      * @param int|null $statut
      * @param string|null $registration
-     * @param User|null $user_fk
-     * @param Category|null $category_fk
+     * @param int|null $user_fk
+     * @param int|null $category_fk
      * @param string|null $name
      * @param string|null $description
      * @param string|null $content
      */
     public function __construct(int $id = null, int $statut = null, string $registration = null,
-                                User $user_fk = null, Category $category_fk = null,
+                                int $user_fk = null, int $category_fk = null,
                                 string $name = null, string $description = null, string $content = null)
     {
         $this->id = $id;
@@ -88,38 +88,40 @@ class Subject
 
     /**
      * Get user_fk of Subject
-     * @return User|null
+     * @return int|null
      */
-    public function getUserFk(): ?User
+    public function getUserFk(): ?int
     {
         return $this->user_fk;
     }
 
     /**
      * Set user_fk of Subject
-     * @param User|null $user_fk
+     * @param false|int|null $user_fk
      */
-    public function setUserFk(?User $user_fk): void
+    public function setUserFk($user_fk): Subject
     {
         $this->user_fk = $user_fk;
+        return $this;
     }
 
     /**
      * Get category_fk of Subject
-     * @return Category|null
+     * @return int|null
      */
-    public function getCategoryFk(): ?Category
+    public function getCategoryFk(): ?int
     {
         return $this->category_fk;
     }
 
     /**
      * Set category_fk of Subject
-     * @param Category|null $category_fk
+     * @param false|int|null $category_fk
      */
-    public function setCategoryFk(?Category $category_fk): void
+    public function setCategoryFk($category_fk): Subject
     {
         $this->category_fk = $category_fk;
+        return $this;
     }
 
     /**

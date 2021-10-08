@@ -5,20 +5,20 @@ class Commentary
 {
     private ?int $id;
     private ?int $statut;
-    private ?User $user_fk;
-    private ?Subject $subject_fk;
+    private ?int $user_fk;
+    private ?int $subject_fk;
     private ?string $content;
 
     /**
      * Commentary constructor.
      * @param int|null $id
      * @param int|null $statut
-     * @param User|null $user_fk
-     * @param Subject|null $subject_fk
+     * @param int|null $user_fk
+     * @param int|null $subject_fk
      * @param string|null $content
      */
     public function __construct(int $id = null, int $statut = null,
-                                User $user_fk = null, Subject $subject_fk = null, string $content = null)
+                                int $user_fk = null, int $subject_fk = null, string $content = null)
     {
         $this->id = $id;
         $this->statut = $statut;
@@ -58,38 +58,40 @@ class Commentary
 
     /**
      * Get user_fk of Commentary
-     * @return User|null
+     * @return int|null
      */
-    public function getUserFk(): ?User
+    public function getUserFk(): ?int
     {
         return $this->user_fk;
     }
 
     /**
      * Set user_fk of Commentary
-     * @param User|null $user_fk
+     * @param false|int|null $user_fk
      */
-    public function setUserFk(?User $user_fk): void
+    public function setUserFk($user_fk): Commentary
     {
         $this->user_fk = $user_fk;
+        return $this;
     }
 
     /**
      * Get subject_fk of Commentary
-     * @return Subject|null
+     * @return int|null
      */
-    public function getSubjectFk(): ?Subject
+    public function getSubjectFk(): ?int
     {
         return $this->subject_fk;
     }
 
     /**
-     * Set subject_fk of Commentary
-     * @param Subject|null $subject_fk
+     * Set subject of Commentary
+     * @param false|int|null $subject_fk
      */
-    public function setSubjectFk(?Subject $subject_fk): void
+    public function setSubjectFk($subject_fk): Commentary
     {
         $this->subject_fk = $subject_fk;
+        return $this;
     }
 
     /**

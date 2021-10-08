@@ -8,8 +8,8 @@ class User
     private ?string $registration;
     private ?string $username;
     private ?string $password;
-    private ?string $mail;
-    private ?Role $role_fk;
+    private ?string $email;
+    private ?int $role_fk;
 
     /**
      * User constructor.
@@ -18,17 +18,17 @@ class User
      * @param string|null $registration
      * @param string|null $username
      * @param string|null $password
-     * @param string|null $mail
-     * @param Role|null $role_fk
+     * @param string|null $email
+     * @param int|null $role_fk
      */
-    public function __construct(int $id = null, int $statut = null, string $registration = null, string $username = null, string $password = null, string $mail = null, Role $role_fk = null)
+    public function __construct(int $id = null, int $statut = null, string $registration = null, string $username = null, string $password = null, string $email = null, int $role_fk = null)
     {
         $this->id = $id;
         $this->statut = $statut;
         $this->registration = $registration;
         $this->username = $username;
         $this->password = $password;
-        $this->mail = $mail;
+        $this->email = $email;
         $this->role_fk = $role_fk;
     }
 
@@ -125,37 +125,39 @@ class User
      * Get email of User
      * @return string|null
      */
-    public function getMail(): ?string
+    public function getEmail(): ?string
     {
-        return $this->mail;
+        return $this->email;
     }
 
     /**
      * Set email of User
-     * @param string|null $mail
+     * @param string|null $email
      * @return User
      */
-    public function setMail(?string $mail): User
+    public function setEmail(?string $email): User
     {
-        $this->mail = $mail;
+        $this->email = $email;
         return $this;
     }
 
     /**
-     * Get role Fk of User
-     * @return Role|null
+     * Get role_fk of User
+     * @return int|null
      */
-    public function getRoleFk(): ?Role
+    public function getRoleFk(): ?int
     {
         return $this->role_fk;
     }
 
     /**
-     * Set role Fk of User
-     * @param Role|null $role_fk
+     * Set role_fk of User
+     * @param false|int|null $role_fk
      */
-    public function setRoleFk(?Role $role_fk): void
+    public function setRoleFk($role_fk): User
     {
         $this->role_fk = $role_fk;
+        return $this;
     }
+
 }

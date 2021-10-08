@@ -38,7 +38,7 @@ else
                 {
                     $new_password = password_hash($_POST['password'], PASSWORD_BCRYPT);
                     $addUser = new UserManager();
-                    $addUser = $addUser->addUser($username, $password, $email);
+                    $addUser = $addUser->addUser($username, $new_password, $email);
 
                     if ($addUser)
                     {
