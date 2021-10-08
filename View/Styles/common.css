@@ -13,8 +13,12 @@ body {
     font-family: Arial, sans-serif;
 }
 
+h1 {
+    font-family: Georgia, sans-serif;
+}
+
 #bodyDiv, input, button {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 /* Width */
@@ -45,71 +49,71 @@ h1, #header_logIn_Logout {
 /* --- Header --- */
 header {
     text-align: center;
-    background-color: lightblue;
 }
 
-#header_logIn_Logout {
-    background-color: whitesmoke;
+nav {
+    display: flex;
+    justify-content: center;
 }
 
-#header_Logout, #header_Register {
-    display: none;
+nav a {
+    margin: 0 35px;
+    padding: 10px 20px;
+}
+
+/* --- Footer --- */
+footer {
+    padding: 20px 10px;
+    text-align: center;
+}
+
+/* --- Login - Register --- */
+#register, #new_post {
+    padding: 25px 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+#register input, #register button, #new_post input {
+    width: 300px;
 }
 
 /* --- Container --- */
-#container {
-    background-color: white;
-}
-
 .section_1 {
-    background-color: whitesmoke;
-    margin: 50px 50px;
-    box-shadow: lightgray 0 0 25px;
+    margin: 50px 20%;
 }
 
-.section_1 button {
+.newPost {
     float: right;
     position: relative;
-    top: -45px;
+    top: -40px;
 }
 
 .section_1 .category, .section_1 .subjects, .section_1 .subject, .subject p {
     padding: 20px;
 }
 
-.section_1 .category {
-    background-color: lightblue;
-}
-
 .section_1 .subject {
     margin: 30px 0;
-    background-color: white;
-}
-
-/* --- Footer --- */
-footer {
-    padding: 20px 10px;
-    background-color: lightblue;
-    text-align: center;
 }
 
 /* --- Input / Button --- */
 input, button {
     margin: 5px 25px;
-    border: none;
 }
 
-input {
+input, select {
     padding: 10px 10px;
-    background-color: lightblue;
 }
 
 button {
     padding: 10px 30px;
-    background-color: lightskyblue;
 }
 
-button:hover {
-    cursor: pointer;
-    background-color: lightsalmon;
+/* Alert message */
+#header_message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 10px;
 }

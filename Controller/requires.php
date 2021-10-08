@@ -11,5 +11,13 @@ require_once $root . "/Model/Classes/Database.php";
 
 //Entity
 require_once $root . "/Model/Entity/Category.php";
+require_once $root . "/Model/Entity/Commentary.php";
 require_once $root . "/Model/Entity/Role.php";
+require_once $root . "/Model/Entity/Subject.php";
+require_once $root . "/Model/Entity/Token.php";
 require_once $root . "/Model/Entity/User.php";
+
+//Manager
+require_once $root . "/Model/Manager/RoleManager.php";
+require_once $root . "/Model/Manager/TokenManager.php";
+require_once $root . "/Model/Manager/UserManager.php";

@@ -1,0 +1,78 @@
+/* --- Color --- */
+header, h1 a, button, footer {
+    color: #e3e3e3;
+}
+
+button:hover, a{
+    color: #272323;
+}
+
+/* --- Background --- */
+header, footer {
+    background-color: #2b2b2b;
+}
+
+#header_logIn_Logout, .section_1 {
+    background-color: whitesmoke;
+}
+
+body,.section_1 .subject {
+    background-color: #f2eded;
+}
+
+.section_1 {
+    background-color: #b2dfd9;
+}
+
+.category {
+    background: rgba(233,231,148,1);
+    /*background: radial-gradient(circle, rgba(174,238,238,1) 0%, rgba(233,231,148,1) 100%);*/
+}
+
+button {
+    background-color: #272323;
+}
+
+/* --- Border / Shadow --- */
+nav a {
+    border: solid 2px #272323;
+}
+
+.section_1, .category, .subject, #register, button {
+    border-radius: 20px;
+}
+
+.category {
+    border-radius: 20px 20px 0 0;
+}
+
+input, button {
+    border: none;
+}
+
+/* --- Others ---*/
+button:hover {
+    cursor: pointer;
+    background: rgba(174,238,238,1);
+    background: radial-gradient(circle, rgba(174,238,238,1) 0%, rgba(233,231,148,1) 100%);
+}
+
+a {
+    text-decoration: none;
+}
+
+/* --- Alert color --- */
+.red {
+    border: red solid 3px;
+    color: red;
+}
+
+.orange {
+    border: solid orange 3px;
+    color: orange;
+}
+
+.green {
+    border: solid 3px limegreen;
+    color: limegreen;
+}

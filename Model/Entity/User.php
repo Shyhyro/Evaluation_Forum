@@ -42,7 +42,7 @@ class User
     }
 
     /**
-     * Get sattut of User
+     * Get statut of User
      * @return int|null
      */
     public function getStatut(): ?int

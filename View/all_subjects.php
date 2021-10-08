@@ -1,9 +1,10 @@
 <?php
 include '../View/Elements/header.php';
 ?>
+
     <section class="section_1">
         <div class="category">
-                <a href="../View/all_subjects.php?id=0"><h2>Category Tittle</h2></a>
+            <h2>Category</h2>
             <div>
                 <a href="#"><button type="button" class="orange">Modifier</button></a>
                 <a href="#"><button type="button" class="orange">Archiver</button></a>
@@ -40,5 +41,5 @@ include '../View/Elements/header.php';
             </div>
         </div>
     </section>
+
 <?php
-include '../View/Elements/footer.php';

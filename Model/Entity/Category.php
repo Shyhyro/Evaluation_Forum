@@ -6,7 +6,7 @@ class Category
     private ?string $name;
 
     /**
-     * Role constructor.
+     * Category constructor.
      * @param int|null $id
      * @param string|null $name
      */

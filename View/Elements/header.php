@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Styles -->
     <link rel="stylesheet" href="../View/Styles/common.css">
+    <link rel="stylesheet" href="../View/Styles/colors.css">
 </head>
 
 <body>
@@ -15,37 +16,54 @@
 
     <header>
         <div id="header_Tittle">
-            <h1>Forum</h1>
+            <h1><a href="../View/index.php">Forum</a></h1>
         </div>
+        <?php
+        if (isset($_GET['error'])) {
+            if ($_GET['error'] === 'easyPassword') {
+            ?>
+                <div id="header_message" class="red">
+                    Mots de passe trop simple.<br>
+                    Le mots de passe doit contenir une majuscule, une minuscule, <br>
+                    un caractère spécial, un chiffre et avoir une longueur minimum de 8.
+                </div>
+        <?php
+            }
+            if ($_GET['error'] === 'passwordEmail') {
+                ?>
+                <div id="header_message" class="red">
+                    Mots de passe différents où Email différents.
+                </div>
+        <?php
+            }
+        }
+        ?>
         <div id="header_logIn_Logout">
-            <form id="header_Login" name="Log-in">
-                <label>
-                    <input type="text" placeholder="Username" name="username" required>
-                    <input type="password" placeholder="Password" name="password" required>
-                    <button type="submit">Log-In</button>
-                    <button type="button">Register</button>
-                </label>
-            </form>
-            <form id="header_Register" name="Register">
-                <label for="register_Username">Username:</label>
-                <input id="register_Username" type="text" name="username" required>
+            <?php
+            if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
+            {
+            ?>
+                <div id="header_Logout">
+                    <p>Hello Username!</p>
+                    <button type="button"><a>Administration</a></button>
+                    <button type="button" class="red"><a>Log-out</a></button>
+                </div>
+            <?php
+            }
+            else {
+            ?>
+                <form id="header_Login" name="Log-in">
+                    <label>
+                        <input type="text" placeholder="Username" name="username" required>
+                        <input type="password" placeholder="Password" name="password" required>
+                        <button type="submit" class="green">Log-In</button>
+                        <a href="../View/login_register.php"><button type="button">Register</button></a>
+                    </label>
+                </form>
+            <?php
+            }
+            ?>
 
-                <label for="register_Password">Password:</label>
-                <input id="register_Password" type="password" name="password" required>
-
-                <label for="register_Password_Check">Repeat your Password:</label>
-                <input id="register_Password_Check" type="password" name="passwordCheck" required>
-
-                <label for="register_Email">Email:</label>
-                <input id="register_Email" type="email" name="email" required>
-
-                <label for="register_Email_Check">Repeat your Email:</label>
-                <input id="register_Email_Check" type="email" name="email" required>
-            </form>
-            <div id="header_Logout">
-                <p>Hello Username!</p>
-                <button type="button">Log-out</button>
-            </div>
         </div>
     </header>
 
