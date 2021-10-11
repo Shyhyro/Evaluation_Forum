@@ -44,8 +44,8 @@ if (isset($session))
                 }
                 ?>
             </table>
-            <form>
-                <input type="text" maxlength="45" required>
+            <form name="createCategory" action="../Controller/CategoryCreateController.php?error=0" method="post">
+                <input name="name" type="text" maxlength="45" required>
                 <button type="submit" class="green">Créer</button>
             </form>
         </section>

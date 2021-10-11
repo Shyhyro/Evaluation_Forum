@@ -38,6 +38,19 @@ class CategoryManager
     }
 
     /**
+     * Create a category
+     * @param $name
+     * @return bool
+     */
+    public function createCategory($name) :bool
+    {
+        $stmt = Database::getInstance()->prepare("INSERT INTO category (name) VALUE (:name)");
+        $stmt->bindValue(':name', $name);
+
+        return $stmt->execute();
+    }
+
+    /**
      * Delete a category
      * @param $categoryId
      * @return bool
