@@ -114,11 +114,11 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
                     if ($userRole === 1||2)
                     {
                     ?>
-                        <button type="button" class="green"><a href="../View/Administration.php">Administration</a></button>
+                    <a href="../View/Administration.php"><button type="button" class="green">Administration</button></a>
                     <?php
                     }
                     ?>
-                    <button type="button" class="red"><a href="../Controller/UserLogoutController.php">Log-out</a></button>
+                    <a href="../Controller/UserLogoutController.php"><button type="button" class="red">Log-out</button></a>
                 </div>
                 <?php
             }

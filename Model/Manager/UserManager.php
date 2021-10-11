@@ -42,6 +42,28 @@ class UserManager
     }
 
     /**
+     * Search a User in table user by Id
+     * @param $username
+     * @return User
+     */
+    public function searchUserById($id): ?User
+    {
+        $stmt = Database::getInstance()->prepare("SELECT * FROM user  WHERE id = :id LIMIT 1");
+        $stmt->bindValue(':id', $id);
+        $state = $stmt->execute();
+        if($state && $userData = $stmt->fetch())
+        {
+            $user = new User($userData['id'], $userData['statut'], $userData['registration'], $userData['username'], $userData['password'],
+                $userData['email'], $userData['role_fk']);
+        }
+        else
+        {
+            $user = null;
+        }
+        return $user;
+    }
+
+    /**
      * Add a new user
      * @param $username
      * @param $password
@@ -57,4 +79,18 @@ class UserManager
 
         return $stmt->execute();
     }
+
+    /**
+     * delete a user
+     * @param $userId
+     * @return bool
+     */
+    public function deleteUser($userId) :bool
+    {
+        $stmt = Database::getInstance()->prepare("DELETE FROM user WHERE id = :userId ");
+        $stmt->bindValue(':userId', $userId);
+
+        return $stmt->execute();
+    }
+
 }

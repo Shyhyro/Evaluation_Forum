@@ -37,4 +37,17 @@ class CategoryManager
         return $categories;
     }
 
+    /**
+     * Delete a category
+     * @param $categoryId
+     * @return bool
+     */
+    public function deleteCategory($categoryId) :bool
+    {
+        $stmt = Database::getInstance()->prepare("DELETE FROM category WHERE id = :categoryId ");
+        $stmt->bindValue(':categoryId', $categoryId);
+
+        return $stmt->execute();
+    }
+
 }

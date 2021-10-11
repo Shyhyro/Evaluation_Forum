@@ -20,5 +20,6 @@ require_once $root . "/Model/Entity/User.php";
 //Manager
 require_once $root . "/Model/Manager/CategoryManager.php";
 require_once $root . "/Model/Manager/RoleManager.php";
+require_once $root . "/Model/Manager/SubjectManager.php";
 require_once $root . "/Model/Manager/TokenManager.php";
 require_once $root . "/Model/Manager/UserManager.php";

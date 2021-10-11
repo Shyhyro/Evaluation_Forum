@@ -3,15 +3,6 @@ include '../View/Elements/header.php';
 
 if (isset($session))
 {
-    $session = true;
-
-    $userManager = new UserManager();
-    $user = $userManager->searchUser($_SESSION['username']);
-    $roleManager = new RoleManager();
-    $role = $roleManager->searchRole($user->getRoleFk());
-
-    $userRole = $role->getId();
-
     $categoriesManager = new CategoryManager();
     $allCategories = $categoriesManager->allCategory();
 
@@ -21,7 +12,7 @@ if (isset($session))
         <div class="category">
             <h2>Create a new Post</h2>
         </div>
-        <form id="new_post" name="NewPost">
+        <form id="new_post" name="NewPost" method="post" action="../Controller/SubjectCreateController.php?error=0">
             <select name="category">
                 <?php
                 foreach ($allCategories as $oneCategory)

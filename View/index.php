@@ -1,10 +1,18 @@
 <?php
 include '../View/Elements/header.php';
 
+$userManager = new UserManager();
+
+$categoryManager = new CategoryManager();
+$allCategory = $categoryManager->allCategory();
+
+$subjectManager = new SubjectManager();
+
+foreach ($allCategory as $oneCategory) {
 ?>
     <section class="section_1">
         <div class="category">
-                <a href="../View/all_subjects.php?id=0"><h2>Category Tittle</h2></a>
+                <a href="../View/all_subjects.php?id=0"><h2><?=$oneCategory->getName() ?></h2></a>
             <div>
                 <?php
                 if (isset($session) && $userRole === 1)
@@ -27,8 +35,14 @@ include '../View/Elements/header.php';
             ?>
         </div>
         <div class="subjects">
+            <?php
+            $allSubjects = $subjectManager->getAllSubjectOfCategory($oneCategory->getId());
+
+            foreach ($allSubjects as $oneSubject)
+            {
+            ?>
             <div class="subject">
-                <h3>Post Tittle</h3>
+                <h3><?= $oneSubject->getName() ?></h3>
                 <div>
                 <?php
                     if (isset($session) && ($userRole === 1||2||3))
@@ -55,13 +69,14 @@ include '../View/Elements/header.php';
                     }
                         ?>
                 </div>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi blanditiis dignissimos error fugiat fugit hic.
-                    In ipsam nesciunt nostrum obcaecati possimus quam qui quo rem repellat suscipit velit! Inventore?
-                </p>
-                <span>By Username</span>
+                <p><?=$oneSubject->getDescription() ?></p>
+                <span>By <?=$userManager->searchUserById($oneSubject->getUserFk())->getUsername() ?></span>
             </div>
+                <?php
+            }
+                ?>
         </div>
     </section>
 <?php
+}
 include '../View/Elements/footer.php';
