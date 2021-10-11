@@ -5,7 +5,7 @@ class RoleManager
 {
     /**
      * Search role
-     * @param $role_fk
+     * @param $roleId
      * @return Role
      */
     public function searchRole($roleId):Role {

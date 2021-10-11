@@ -1,5 +1,18 @@
 <?php
 require_once "../Controller/requires.php";
+
+if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
+{
+    $session = true;
+
+    $userManager = new UserManager();
+    $user = $userManager->searchUser($_SESSION['username']);
+    $roleManager = new RoleManager();
+    $role = $roleManager->searchRole($user->getRoleFk());
+
+    $userRole = $role->getId();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,13 +33,16 @@ require_once "../Controller/requires.php";
             <h1><a href="../View/index.php">Forum</a></h1>
         </div>
         <?php
-        if (isset($_GET['error'])) {
-            if ($_GET['error'] === 'errorIsComing') {
+        if (isset($_GET['error']))
+        {
+            if ($_GET['error'] === 'errorIsComing')
+            {
                 ?>
                 <div id="header_message" class="red">Une erreur est survenus!</div>
                 <?php
             }
-            if ($_GET['error'] === 'easyPassword') {
+            if ($_GET['error'] === 'easyPassword')
+            {
                 ?>
                 <div id="header_message" class="red">
                     Mots de passe trop simple.<br>
@@ -35,22 +51,26 @@ require_once "../Controller/requires.php";
                 </div>
                 <?php
             }
-            if ($_GET['error'] === 'passwordEmail') {
+            if ($_GET['error'] === 'passwordEmail')
+            {
                 ?>
                 <div id="header_message" class="red">Mots de passe différents et/ou Email différents.</div>
                 <?php
             }
-            if ($_GET['error'] === 'utilisateurExistant') {
+            if ($_GET['error'] === 'utilisateurExistant')
+            {
                 ?>
                 <div id="header_message" class="orange">Username existant</div>
                 <?php
             }
-            if ($_GET['error'] === 'missingUser') {
+            if ($_GET['error'] === 'missingUser')
+            {
                 ?>
                 <div id="header_message" class="orange">Username inexistant ou incorrect!</div>
                 <?php
             }
-            if ($_GET['error'] === 'dataMissing') {
+            if ($_GET['error'] === 'dataMissing')
+            {
                 ?>
                 <div id="header_message" class="orange">Donnée(s) Manquante(s)!</div>
                 <?php
@@ -58,8 +78,10 @@ require_once "../Controller/requires.php";
         }
         ?>
         <?php
-        if (isset($_GET['statut'])) {
-            if ($_GET['statut'] === 'create') {
+        if (isset($_GET['statut']))
+        {
+            if ($_GET['statut'] === 'create')
+            {
                 ?>
                 <div id="header_message" class="green">
                     Compte créer!<br>En attente de validation.<br>Un email vous à été envoyer pour confirmation.<br>
@@ -67,12 +89,14 @@ require_once "../Controller/requires.php";
                 </div>
                 <?php
             }
-            if ($_GET['statut'] === 'online') {
+            if ($_GET['statut'] === 'online')
+            {
                 ?>
                 <div id="header_message" class="green">Vous êtes en ligne!</div>
                 <?php
             }
-            if ($_GET['statut'] === 'offline') {
+            if ($_GET['statut'] === 'offline')
+            {
                 ?>
                 <div id="header_message" class="red">Vous êtes hors ligne!</div>
                 <?php
@@ -81,15 +105,25 @@ require_once "../Controller/requires.php";
         ?>
         <div id="header_logIn_Logout">
             <?php
-            if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key'])) {
+            if (isset($session))
+            {
               ?>
                 <div id="header_Logout">
-                    <p>Hello Username!</p>
-                    <button type="button"><a href="#">Administration</a></button>
+                    <p>Hello <?= $role->getName() . ' ' . $user->getUsername() ?>!</p>
+                    <?php
+                    if ($userRole === 1||2)
+                    {
+                    ?>
+                        <button type="button" class="green"><a href="../View/Administration.php">Administration</a></button>
+                    <?php
+                    }
+                    ?>
                     <button type="button" class="red"><a href="../Controller/UserLogoutController.php">Log-out</a></button>
                 </div>
                 <?php
-           } else {
+            }
+            else
+            {
                 ?>
                 <form id="header_Login" name="Log-in" method="post" action="../Controller/UserLoginController.php?error=0">
                     <label>

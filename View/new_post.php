@@ -1,10 +1,21 @@
 <?php
 include '../View/Elements/header.php';
 
-//if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
-//{
+if (isset($session))
+{
+    $session = true;
 
-    ?>
+    $userManager = new UserManager();
+    $user = $userManager->searchUser($_SESSION['username']);
+    $roleManager = new RoleManager();
+    $role = $roleManager->searchRole($user->getRoleFk());
+
+    $userRole = $role->getId();
+
+    $categoriesManager = new CategoryManager();
+    $allCategories = $categoriesManager->allCategory();
+
+?>
 
     <section class="section_1">
         <div class="category">
@@ -12,8 +23,14 @@ include '../View/Elements/header.php';
         </div>
         <form id="new_post" name="NewPost">
             <select name="category">
-                <option>Category 1</option>
-                <option>Category 2</option>
+                <?php
+                foreach ($allCategories as $oneCategory)
+                {
+                    ?>
+                    <option value="<?=$oneCategory->getId() ?>"><?=$oneCategory->getName() ?></option>
+                    <?php
+                }
+                ?>
             </select>
 
             <label for="newPost_name">Tittle:</label>
@@ -29,11 +46,9 @@ include '../View/Elements/header.php';
         </form>
     </section>
 
-
-<?php /*
+<?php
 }
 else {
     header("location:index.php");
 }
- */
- ?>
+?>

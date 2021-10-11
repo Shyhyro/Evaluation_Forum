@@ -1,9 +1,9 @@
 /* --- Color --- */
-header, h1 a, button, footer {
+header, h1 a, button, footer, #header_Logout a {
     color: #e3e3e3;
 }
 
-button:hover, a{
+button:hover, a,  #header_Logout button:hover a, #header_Logout{
     color: #272323;
 }
 
