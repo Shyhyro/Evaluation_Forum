@@ -1,0 +1,15 @@
+{
+    "name": "bosqu/evaluation_forum",
+    "autoload": {
+        "psr-4": {
+            "Bosqu\\EvaluationForum\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Shyhyro",
+            "email": "Bosquet.laurie@outlook.com"
+        }
+    ],
+    "require": {}
+}

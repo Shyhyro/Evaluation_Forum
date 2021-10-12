@@ -12,7 +12,7 @@ foreach ($allCategory as $oneCategory) {
 ?>
     <section class="section_1">
         <div class="category">
-                <a href="../View/all_subjects.php?id=0"><h2><?=$oneCategory->getName() ?></h2></a>
+                <a href="../View/all_subjects.php?category=<?=$oneCategory->getId() ?>"><h2><?=$oneCategory->getName() ?></h2></a>
             <div>
                 <?php
                 if (isset($session) && $userRole === 1)

@@ -26,7 +26,6 @@ body,.section_1 .subject {
 
 .category {
     background: rgba(233,231,148,1);
-    /*background: radial-gradient(circle, rgba(174,238,238,1) 0%, rgba(233,231,148,1) 100%);*/
 }
 
 button {
@@ -48,6 +47,14 @@ nav a {
 
 input, button {
     border: none;
+}
+
+header {
+    border-bottom: solid rgba(174, 238, 238, 1) 4px;
+}
+
+#header_Tittle {
+    border-bottom: solid rgba(233, 231, 148, 1) 4px;
 }
 
 /* --- Others ---*/

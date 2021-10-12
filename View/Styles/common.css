@@ -10,11 +10,7 @@ body {
 
 /* Font */
 #bodyDiv {
-    font-family: Arial, sans-serif;
-}
-
-h1 {
-    font-family: Georgia, sans-serif;
+    font-family: "Comic Sans MS", sans-serif;
 }
 
 #bodyDiv, input, button {

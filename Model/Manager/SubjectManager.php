@@ -112,4 +112,23 @@ class SubjectManager
         return $stmt->execute();
     }
 
+    /**
+     * get a subjects
+     * @param $subjectId
+     * @return bool
+     */
+    public function getSubjectById($subjectId):Subject {
+        $stmt = Database::getInstance()->prepare("SELECT * FROM subject WHERE id = :subjectId ");
+        $stmt->bindValue(':subjectId', $subjectId);
+        $state = $stmt->execute();
+        $subjects = null;
+
+        if($state) {
+            $subjectsData = $stmt->fetch();
+            $subjects = new Subject($subjectsData['id'], $subjectsData['statut'], $subjectsData['registration'], $subjectsData['user_fk'],
+                $subjectsData['category_fk'], $subjectsData['name'], $subjectsData['description'], $subjectsData['content']);
+        }
+        return $subjects;
+    }
+
 }
