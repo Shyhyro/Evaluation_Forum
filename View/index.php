@@ -42,7 +42,7 @@ foreach ($allCategory as $oneCategory) {
             {
             ?>
             <div class="subject">
-                <h3><?= $oneSubject->getName() ?></h3>
+                <h3><a href="../View/one_post.php?sujet=<?=$oneSubject->getId() ?>"><?= $oneSubject->getName() ?></a></h3>
                 <div>
                 <?php
                     if (isset($session) && ($userRole === 1||2||3))

@@ -24,16 +24,16 @@ if (isset($session))
                 ?>
             </select>
 
-            <label for="newPost_name">Tittle:</label>
+            <label for="newPost_name">Titre:</label>
             <input id="newPost_name" type="text" name="name" required maxlength="45">
 
             <label for="newPost_description">Description:</label>
             <textarea id="newPost_description" name="description" required maxlength="300"></textarea>
 
-            <label for="newPost_content">Content:</label>
+            <label for="newPost_content">Contenus:</label>
             <textarea id="newPost_content" name="content" required></textarea>
 
-            <button type="submit" class="green">Create new post</button>
+            <button type="submit" class="green">Créer nouveau sujet!</button>
         </form>
     </section>
 

@@ -1,20 +1,20 @@
 <?php
 include '../View/Elements/header.php';
 
-if (isset($_GET['category'])) {
+if (isset($_GET['sujet'])) {
     $categoryManager = new CategoryManager();
     $subjectManager = new SubjectManager();
     $userManager = new UserManager();
 
     $sujet = $_GET['sujet'];
-    $category = $_GET['category'];
+    $category = $subjectManager->searchSubject($sujet)->getCategoryFk();
     ?>
 
     <section class="section_1">
         <div class="category">
             <h2><?=$categoryManager->searchCategory($category)->getName() ?></h2>
         </div>
-        <div class="subject">
+        <div class="subjects">
             <?php
 
             $Subjects = $subjectManager->getSubjectById($sujet);
@@ -49,6 +49,24 @@ if (isset($_GET['category'])) {
                     <p><?=$Subjects->getDescription() ?></p>
             <p><?=$Subjects->getContent() ?></p>
                     <span>By <?=$userManager->searchUserById($Subjects->getUserFk())->getUsername() ?></span>
+        </div>
+    </section>
+    <section class="section_1">
+        <div class="subjects">
+            <div class="subject">
+                <div>Username</div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto blanditiis commodi consectetur doloribus error excepturi
+                    ipsum iste iure minima neque nostrum obcaecati omnis perferendis provident quam similique suscipit, tempore, tenetur.
+                </p>
+            </div>
+            <div class="subject">
+                <form>
+                    <h3>Commentaires:</h3>
+                    <textarea maxlength="300" required></textarea>
+                    <button class="green" type="submit">Envoyer</button>
+                </form>
+            </div>
         </div>
     </section>
 

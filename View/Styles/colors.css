@@ -21,7 +21,7 @@ body,.section_1 .subject {
 }
 
 .section_1 {
-    background-color: #b2dfd9;
+    background-color: #b8aac4;
 }
 
 .category {
@@ -50,7 +50,7 @@ input, button {
 }
 
 header {
-    border-bottom: solid rgba(174, 238, 238, 1) 4px;
+    border-bottom: solid #b8aac4 4px;
 }
 
 #header_Tittle {
@@ -60,8 +60,8 @@ header {
 /* --- Others ---*/
 button:hover {
     cursor: pointer;
-    background: rgba(174,238,238,1);
-    background: radial-gradient(circle, rgba(174,238,238,1) 0%, rgba(233,231,148,1) 100%);
+    /*background: rgba(174,238,238,1);
+    background: radial-gradient(circle, rgba(174,238,238,1) 0%, rgba(233,231,148,1) 100%);*/
 }
 
 a {
@@ -74,12 +74,24 @@ a {
     color: red;
 }
 
+.red:hover {
+    background-color: red;
+}
+
 .orange {
     border: solid orange 3px;
     color: orange;
 }
 
+.orange:hover {
+    background-color: orange;
+}
+
 .green {
     border: solid 3px limegreen;
     color: limegreen;
+}
+
+.green:hover {
+    background-color: limegreen;
 }
