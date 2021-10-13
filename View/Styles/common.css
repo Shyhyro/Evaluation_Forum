@@ -9,6 +9,7 @@ body {
     background-image: url("../../5404580.jpg");
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 
 /* Font */

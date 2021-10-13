@@ -6,7 +6,7 @@ use Bosqu\EvaluationForum\Model\Manager\SubjectManager;
 
 require_once "requires.php";
 
-if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key'], $_GET['category'], $_GET['subject']))
+if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key'], $_GET['subject']))
 {
     $subjectId = $_GET['subject'];
 

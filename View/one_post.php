@@ -41,9 +41,12 @@ if (isset($_GET['sujet'])) {
                             // Admin & Modo → Archiver → subject
                             if ($userRole === 1 || $userRole === 2)
                             {
+                                if ($Subjects->getStatut() === 1)
+                                {
                             ?>
-                            <a href="#"><button type="button" class="orange">Archiver</button></a>
+                            <a href="../Controller/SubjectStatutController.php?error=0&subject=<?=$Subjects->getId()?>"><button type="button" class="orange">Archiver</button></a>
                             <?php
+                                }
                             }
                             // Admin & User creator → Delete → subject
                             if ($userRole === 1 || $user->getId() === $Subjects->getUserFk())
@@ -55,9 +58,9 @@ if (isset($_GET['sujet'])) {
                         }
                         ?>
                     </div>
-                    <p><?=$Subjects->getDescription() ?></p>
+            <p><?=$Subjects->getDescription() ?></p>
             <p><?=$Subjects->getContent() ?></p>
-                    <span>By <?=$userManager->searchUserById($Subjects->getUserFk())->getUsername() ?></span>
+            <span>By <?=$userManager->searchUserById($Subjects->getUserFk())->getUsername() ?></span>
         </div>
     </section>
     <section class="section_1">

@@ -22,7 +22,6 @@ if (isset($_GET['category'])) {
                     {
                     ?>
                     <a href="#"><button type="button" class="orange">Modifier</button></a>
-                    <a href="#"><button type="button" class="orange">Archiver</button></a>
                     <a href="#"><button type="button" class="red">Supprimer</button></a>
                     <?php
                     }
@@ -66,9 +65,12 @@ if (isset($_GET['category'])) {
                                 // Admin & Modo -> Archiver -> Subject
                                 if ($userRole === 1 || $userRole === 2)
                                 {
+                                    if ($oneSubject->getStatut() === 1)
+                                    {
                                 ?>
-                                <a href="#"><button type="button" class="orange">Archiver</button></a>
+                                <a href="../Controller/SubjectStatutController.php?error=0&subject=<?=$oneSubject->getId()?>"><button type="button" class="orange">Archiver</button></a>
                                 <?php
+                                    }
                                 }
                                 // Admin & User creator -> Delete -> Subject
                                 if ($userRole === 1 || $user->getId() === $oneSubject->getUserFk())

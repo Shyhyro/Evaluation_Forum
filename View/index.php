@@ -26,7 +26,6 @@ foreach ($allCategory as $oneCategory) {
                     {
                         ?>
                         <a href="#"><button type="button" class="orange">Modifier</button></a>
-                        <a href="#"><button type="button" class="orange">Archiver</button></a>
                         <a href="#"><button type="button" class="red">Supprimer</button></a>
                         <?php
                     }
@@ -64,9 +63,12 @@ foreach ($allCategory as $oneCategory) {
 
                         if ($userRole === 1 || $userRole === 2)
                         {
+                            if ($oneSubject->getStatut() === 1)
+                            {
                         ?>
-                            <a href="#"><button type="button" class="orange">Archiver</button></a>
+                            <a href="../Controller/SubjectStatutController.php?error=0&subject=<?=$oneSubject->getId()?>"><button type="button" class="orange">Archiver</button></a>
                     <?php
+                            }
                         }
 
                         if ($userRole === 1 || $user->getId() === $oneSubject->getUserFk())
