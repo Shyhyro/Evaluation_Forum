@@ -14,6 +14,7 @@ if (isset($_GET['sujet'])) {
 
     $sujet = $_GET['sujet'];
     $category = $subjectManager->searchSubject($sujet)->getCategoryFk();
+
     ?>
 
     <section class="section_1">
@@ -28,25 +29,27 @@ if (isset($_GET['sujet'])) {
                     <h3><?= $Subjects->getName() ?></h3>
                     <div>
                         <?php
-                        if (isset($session) && ($userRole === 1||2||3))
+                        if (isset($session))
                         {
+                            // Admin, Modo & User creator → modifier → subject
+                            if ($userRole === 1 || $userRole === 2 || $user->getId() === $Subjects->getUserFk() )
+                            {
                             ?>
                             <a href="#"><button type="button" class="orange">Modifier</button></a>
                             <?php
-                        }
-
-                        if (isset($session) && ($userRole === 1||2))
-                        {
+                            }
+                            // Admin & Modo → Archiver → subject
+                            if ($userRole === 1 || $userRole === 2)
+                            {
                             ?>
                             <a href="#"><button type="button" class="orange">Archiver</button></a>
                             <?php
-                        }
-                        if (isset($session))
-                        {
-                            if ($userRole === 1)
+                            }
+                            // Admin & User creator → Delete → subject
+                            if ($userRole === 1 || $user->getId() === $Subjects->getUserFk())
                             {
                                 ?>
-                                <a href="#"><button type="button" class="red">Supprimer</button></a>
+                                <a href="../Controller/SubjectDeleteController.php?error=0&category=<?=$Subjects->getCategoryFk()?>&subject=<?=$Subjects->getId()?>"><button type="button" class="red">Supprimer</button></a>
                                 <?php
                             }
                         }
@@ -70,18 +73,19 @@ if (isset($_GET['sujet'])) {
                 <div>
 
                     <?php
-                    if (isset($session) && ($userRole === 1||2||3))
+                    if (isset($session))
                     {
+                        if ($userRole === 1 || $userRole === 2 || $user->getId() === $Subjects->getUserFk() )
+                        {
                         ?>
                         <a href="#"><button type="button" class="orange">Modifier</button></a>
                         <?php
-                    }
-                    if (isset($session))
-                    {
-                        if ($userRole === 1)
+                        }
+
+                        if ($userRole === 1 || $user->getId() === $Subjects->getUserFk() )
                         {
                             ?>
-                            <a href="#"><button type="button" class="red">Supprimer</button></a>
+                            <a href="../Controller/CommentaryDeleteController.php?error=0&post=<?=$sujet?>&commentary=<?=$com->getId()?>"><button type="button" class="red">Supprimer</button></a>
                             <?php
                         }
                     }
@@ -92,13 +96,22 @@ if (isset($_GET['sujet'])) {
                 <?php
             }
                 ?>
-            <div class="subject">
-                <form name="new_commentary" method="post" action="../Controller/CommentaryCreateController.php?error=0&post=<?=$sujet?>" >
-                    <h3>Commentaires:</h3>
-                    <textarea name="content" maxlength="300" required></textarea>
-                    <button class="green" type="submit">Envoyer</button>
-                </form>
-            </div>
+            <?php
+            if ($session)
+            {
+                if ($Subjects->getStatut() === 1) {
+                    ?>
+                    <div class="subject">
+                        <form name="new_commentary" method="post" action="../Controller/CommentaryCreateController.php?error=0&post=<?=$sujet?>">
+                            <h3>Commentaires:</h3>
+                            <textarea name="content" maxlength="300" required></textarea>
+                            <button class="green" type="submit">Envoyer</button>
+                        </form>
+                    </div>
+                        <?php
+                }
+            }
+            ?>
         </div>
     </section>
 

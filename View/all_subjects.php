@@ -15,24 +15,29 @@ if (isset($_GET['category'])) {
             <h2><?=$categoryManager->searchCategory($_GET['category'])->getName() ?></h2>
             <div>
                 <?php
-                if (isset($session) && $userRole === 1)
+                if (isset($session))
                 {
+                    // JUST Admin → modification, archiver, delete → Category
+                    if ($userRole === 1)
+                    {
                     ?>
                     <a href="#"><button type="button" class="orange">Modifier</button></a>
                     <a href="#"><button type="button" class="orange">Archiver</button></a>
                     <a href="#"><button type="button" class="red">Supprimer</button></a>
                     <?php
-                }
+                    }
                 ?>
             </div>
-            <?php
-            if (isset($session) && ($userRole === 1||2||3 ))
-            {
-                ?>
-                <a href="../View/new_post.php"><button type="button" class="newPost green">New Post</button></a>
                 <?php
-            }
-            ?>
+                // Admin, Modo & User → Create a new post in this category
+                    if ($userRole === 1 || $userRole === 2 || $userRole === 3)
+                    {
+                    ?>
+                    <a href="../View/new_post.php"><button type="button" class="newPost green">New Post</button></a>
+                    <?php
+                    }
+                }
+                ?>
         </div>
         <div class="subjects">
                 <?php
@@ -49,25 +54,27 @@ if (isset($_GET['category'])) {
                         <h3><a href="../View/one_post.php?sujet=<?=$oneSubject->getId() ?>"><?= $oneSubject->getName() ?></a></h3>
                         <div>
                             <?php
-                            if (isset($session) && ($userRole === 1||2||3))
+                            if (isset($session))
                             {
+                                // Admin, Modo & User creator -> Modification -> Subject
+                                if ($userRole === 1 || $userRole === 2 || $user->getId() === $oneSubject->getUserFk() )
+                                {
                                 ?>
                                 <a href="#"><button type="button" class="orange">Modifier</button></a>
                                 <?php
-                            }
-
-                            if (isset($session) && ($userRole === 1||2))
-                            {
+                                }
+                                // Admin & Modo -> Archiver -> Subject
+                                if ($userRole === 1 || $userRole === 2)
+                                {
                                 ?>
                                 <a href="#"><button type="button" class="orange">Archiver</button></a>
                                 <?php
-                            }
-                            if (isset($session))
-                            {
-                                if ($userRole === 1)
+                                }
+                                // Admin & User creator -> Delete -> Subject
+                                if ($userRole === 1 || $user->getId() === $oneSubject->getUserFk())
                                 {
                                     ?>
-                                    <a href="#"><button type="button" class="red">Supprimer</button></a>
+                                    <a href="../Controller/SubjectDeleteController.php?error=0&category=<?=$oneSubject->getCategoryFk()?>&subject=<?=$oneSubject->getId()?>"><button type="button" class="red">Supprimer</button></a>
                                     <?php
                                 }
                             }

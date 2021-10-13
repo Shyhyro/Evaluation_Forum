@@ -20,23 +20,26 @@ foreach ($allCategory as $oneCategory) {
                 <a href="../View/all_subjects.php?category=<?=$oneCategory->getId() ?>"><h2><?=$oneCategory->getName() ?></h2></a>
             <div>
                 <?php
-                if (isset($session) && $userRole === 1)
+                if (isset($session))
                 {
+                    if ($userRole === 1)
+                    {
                         ?>
                         <a href="#"><button type="button" class="orange">Modifier</button></a>
                         <a href="#"><button type="button" class="orange">Archiver</button></a>
                         <a href="#"><button type="button" class="red">Supprimer</button></a>
                         <?php
-                }
+                    }
                 ?>
             </div>
-            <?php
-            if (isset($session) && ($userRole === 1||2||3 ))
-            {
-                ?>
-                <a href="../View/new_post.php"><button type="button" class="newPost green">New Post</button></a>
                 <?php
-            }
+                    if ($userRole === 1 || $userRole === 2 || $userRole === 3)
+                    {
+                        ?>
+                        <a href="../View/new_post.php"><button type="button" class="newPost green">New Post</button></a>
+                        <?php
+                    }
+                }
             ?>
         </div>
         <div class="subjects">
@@ -50,25 +53,26 @@ foreach ($allCategory as $oneCategory) {
                 <h3><a href="../View/one_post.php?sujet=<?=$oneSubject->getId() ?>"><?= $oneSubject->getName() ?></a></h3>
                 <div>
                 <?php
-                    if (isset($session) && ($userRole === 1||2||3))
+                    if (isset($session))
                     {
+                        if ($userRole === 1 || $userRole === 2 || $user->getId() === $oneSubject->getUserFk() )
+                        {
                         ?>
                         <a href="#"><button type="button" class="orange">Modifier</button></a>
                 <?php
-                    }
+                        }
 
-                    if (isset($session) && ($userRole === 1||2))
-                    {
+                        if ($userRole === 1 || $userRole === 2)
+                        {
                         ?>
                             <a href="#"><button type="button" class="orange">Archiver</button></a>
                     <?php
-                    }
-                    if (isset($session))
-                    {
-                        if ($userRole === 1)
+                        }
+
+                        if ($userRole === 1 || $user->getId() === $oneSubject->getUserFk())
                         {
                             ?>
-                            <a href="#"><button type="button" class="red">Supprimer</button></a>
+                            <a href="../Controller/SubjectDeleteController.php?error=0&category=<?=$oneCategory->getId()?>&subject=<?=$oneSubject->getId()?>"><button type="button" class="red">Supprimer</button></a>
                             <?php
                         }
                     }
