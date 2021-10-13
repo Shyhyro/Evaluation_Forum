@@ -34,9 +34,12 @@ if (isset($_GET['sujet'])) {
                             // Admin, Modo & User creator → modifier → subject
                             if ($userRole === 1 || $userRole === 2 || $user->getId() === $Subjects->getUserFk() )
                             {
+                                if ($Subjects->getStatut() === 1)
+                                {
                             ?>
-                            <a href="#"><button type="button" class="orange">Modifier</button></a>
+                            <a href="../View/new_post.php?subject=<?=$Subjects->getId()?>"><button type="button" class="orange">Modifier</button></a>
                             <?php
+                                }
                             }
                             // Admin & Modo → Archiver → subject
                             if ($userRole === 1 || $userRole === 2)
@@ -80,9 +83,12 @@ if (isset($_GET['sujet'])) {
                     {
                         if ($userRole === 1 || $userRole === 2 || $user->getId() === $Subjects->getUserFk() )
                         {
+                            if ($Subjects->getStatut() === 1)
+                            {
                         ?>
                         <a href="#"><button type="button" class="orange">Modifier</button></a>
                         <?php
+                            }
                         }
 
                         if ($userRole === 1 || $user->getId() === $Subjects->getUserFk() )

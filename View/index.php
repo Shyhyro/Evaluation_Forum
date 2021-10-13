@@ -56,9 +56,12 @@ foreach ($allCategory as $oneCategory) {
                     {
                         if ($userRole === 1 || $userRole === 2 || $user->getId() === $oneSubject->getUserFk() )
                         {
+                            if ($oneSubject->getStatut() === 1)
+                            {
                         ?>
-                        <a href="#"><button type="button" class="orange">Modifier</button></a>
+                        <a href="../View/change_post.php?subject=<?=$oneSubject->getId()?>"><button type="button" class="orange">Modifier</button></a>
                 <?php
+                            }
                         }
 
                         if ($userRole === 1 || $userRole === 2)
