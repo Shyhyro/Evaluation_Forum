@@ -1,4 +1,7 @@
 <?php
+namespace Bosqu\EvaluationForum\Controller;
+use Bosqu\EvaluationForum\Model\Manager\UserManager;
+
 require_once "requires.php";
 
 // If a session is active, user redirection to home page

@@ -1,5 +1,5 @@
 <?php
-
+namespace Bosqu\EvaluationForum\Model\Entity;
 
 class Role
 {

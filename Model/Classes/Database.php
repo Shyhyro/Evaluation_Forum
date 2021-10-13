@@ -1,5 +1,8 @@
 <?php
+namespace Bosqu\EvaluationForum\Model\Classes;
 
+use PDO;
+use PDOException;
 
 class Database
 {

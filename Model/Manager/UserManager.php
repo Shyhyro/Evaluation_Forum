@@ -1,4 +1,8 @@
 <?php
+namespace Bosqu\EvaluationForum\Model\Manager;
+
+use Bosqu\EvaluationForum\Model\Classes\Database;
+use Bosqu\EvaluationForum\Model\Entity\User;
 
 class UserManager
 {

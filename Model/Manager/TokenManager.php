@@ -1,4 +1,6 @@
 <?php
+namespace Bosqu\EvaluationForum\Model\Manager;
+use Bosqu\EvaluationForum\Model\Classes\Database;
 
 class TokenManager
 {

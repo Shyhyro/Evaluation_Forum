@@ -1,4 +1,9 @@
 <?php
+
+use Bosqu\EvaluationForum\Model\Manager\CategoryManager;
+use Bosqu\EvaluationForum\Model\Manager\RoleManager;
+use Bosqu\EvaluationForum\Model\Manager\UserManager;
+
 include '../View/Elements/header.php';
 
 if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
@@ -98,4 +103,6 @@ if (isset($session))
 else {
     header("location:index.php");
 }
+
+include '../View/Elements/footer.php';
 ?>

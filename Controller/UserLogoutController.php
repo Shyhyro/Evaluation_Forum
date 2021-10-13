@@ -1,4 +1,5 @@
 <?php
+namespace Bosqu\EvaluationForum\Controller;
 require_once "requires.php";
 
 // If a session is active : Get and destroy all session cookies params for logout

@@ -1,4 +1,9 @@
 <?php
+
+use Bosqu\EvaluationForum\Model\Manager\CategoryManager;
+use Bosqu\EvaluationForum\Model\Manager\SubjectManager;
+use Bosqu\EvaluationForum\Model\Manager\UserManager;
+
 include '../View/Elements/header.php';
 
 $userManager = new UserManager();

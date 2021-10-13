@@ -1,5 +1,9 @@
 <?php
-require_once "../Controller/requires.php";
+
+use Bosqu\EvaluationForum\Model\Manager\RoleManager;
+use Bosqu\EvaluationForum\Model\Manager\UserManager;
+
+require_once $_SERVER['DOCUMENT_ROOT'] . "/Controller/requires.php";
 
 if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
 {
@@ -111,7 +115,7 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
                 <div id="header_Logout">
                     <p>Hello <?= $role->getName() . ' ' . $user->getUsername() ?>!</p>
                     <?php
-                    if ($userRole === 1||2)
+                    if ($userRole === 1)
                     {
                     ?>
                     <a href="../View/Administration.php"><button type="button" class="green">Administration</button></a>
@@ -131,7 +135,7 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
                         <input type="password" placeholder="Password" name="password" required>
                         <button type="submit" class="green">Log-In</button>
                     </label>
-                    <a href="../View/login_register.php"><button type="button">Register</button></a>
+                    <a href="../View/login_register.php"><button type="button" class="orange">Register</button></a>
                 </form>
                 <?php
             }

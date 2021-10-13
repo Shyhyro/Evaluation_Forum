@@ -1,9 +1,9 @@
 /* --- Color --- */
-header, h1 a, button, footer, #header_Logout a {
+header, h1 a, button, footer, #header_Logout a, #header_Logout{
     color: #e3e3e3;
 }
 
-button:hover, a,  #header_Logout button:hover a, #header_Logout{
+button:hover, a,  #header_Logout button:hover a {
     color: #272323;
 }
 
@@ -12,16 +12,12 @@ header, footer {
     background-color: #2b2b2b;
 }
 
-#header_logIn_Logout, .section_1 {
-    background-color: whitesmoke;
-}
-
 body,.section_1 .subject {
     background-color: #f2eded;
 }
 
 .section_1 {
-    background-color: #b8aac4;
+    background-color: #a8d2ac;
 }
 
 .category {
@@ -50,18 +46,20 @@ input, button {
 }
 
 header {
-    border-bottom: solid #b8aac4 4px;
+    border-bottom: #a8d2ac solid 4px;
 }
 
 #header_Tittle {
     border-bottom: solid rgba(233, 231, 148, 1) 4px;
 }
 
+footer {
+    border-top: #a8d2ac solid 4px;
+}
+
 /* --- Others ---*/
 button:hover {
     cursor: pointer;
-    /*background: rgba(174,238,238,1);
-    background: radial-gradient(circle, rgba(174,238,238,1) 0%, rgba(233,231,148,1) 100%);*/
 }
 
 a {

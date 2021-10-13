@@ -1,4 +1,7 @@
 <?php
+
+use Bosqu\EvaluationForum\Model\Manager\CategoryManager;
+
 include '../View/Elements/header.php';
 
 if (isset($session))
@@ -38,6 +41,7 @@ if (isset($session))
     </section>
 
 <?php
+    include '../View/Elements/footer.php';
 }
 else {
     header("location:index.php");

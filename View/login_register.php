@@ -35,4 +35,5 @@ else {
 </section>
 
 <?php
+    include '../View/Elements/footer.php';
 }

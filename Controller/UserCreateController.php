@@ -1,4 +1,7 @@
 <?php
+namespace Bosqu\EvaluationForum\Controller;
+use Bosqu\EvaluationForum\Model\Manager\UserManager;
+
 require_once "requires.php";
 
 if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))

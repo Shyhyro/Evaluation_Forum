@@ -1,4 +1,10 @@
 <?php
+
+use Bosqu\EvaluationForum\Model\Manager\CategoryManager;
+use Bosqu\EvaluationForum\Model\Manager\CommentaryManager;
+use Bosqu\EvaluationForum\Model\Manager\SubjectManager;
+use Bosqu\EvaluationForum\Model\Manager\UserManager;
+
 include '../View/Elements/header.php';
 
 if (isset($_GET['sujet'])) {
@@ -53,17 +59,43 @@ if (isset($_GET['sujet'])) {
     </section>
     <section class="section_1">
         <div class="subjects">
+            <?php
+            $commentary = new CommentaryManager();
+            $allComment = $commentary->getCommentary($sujet);
+
+            foreach ($allComment as $com) {
+            ?>
             <div class="subject">
-                <div>Username</div>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto blanditiis commodi consectetur doloribus error excepturi
-                    ipsum iste iure minima neque nostrum obcaecati omnis perferendis provident quam similique suscipit, tempore, tenetur.
-                </p>
+                <div><?=$userManager->searchUserById($com->getUserFk())->getUsername()?></div>
+                <div>
+
+                    <?php
+                    if (isset($session) && ($userRole === 1||2||3))
+                    {
+                        ?>
+                        <a href="#"><button type="button" class="orange">Modifier</button></a>
+                        <?php
+                    }
+                    if (isset($session))
+                    {
+                        if ($userRole === 1)
+                        {
+                            ?>
+                            <a href="#"><button type="button" class="red">Supprimer</button></a>
+                            <?php
+                        }
+                    }
+                    ?>
+                </div>
+                <p><?=$com->getContent()?></p>
             </div>
+                <?php
+            }
+                ?>
             <div class="subject">
-                <form>
+                <form name="new_commentary" method="post" action="../Controller/CommentaryCreateController.php?error=0&post=<?=$sujet?>" >
                     <h3>Commentaires:</h3>
-                    <textarea maxlength="300" required></textarea>
+                    <textarea name="content" maxlength="300" required></textarea>
                     <button class="green" type="submit">Envoyer</button>
                 </form>
             </div>
@@ -71,6 +103,8 @@ if (isset($_GET['sujet'])) {
     </section>
 
     <?php
+
+    include '../View/Elements/footer.php';
 }
 else
 {

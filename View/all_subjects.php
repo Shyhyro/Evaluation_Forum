@@ -1,4 +1,9 @@
 <?php
+
+use Bosqu\EvaluationForum\Model\Manager\CategoryManager;
+use Bosqu\EvaluationForum\Model\Manager\SubjectManager;
+use Bosqu\EvaluationForum\Model\Manager\UserManager;
+
 include '../View/Elements/header.php';
 
 if (isset($_GET['category'])) {
@@ -78,6 +83,7 @@ if (isset($_GET['category'])) {
     </section>
 
 <?php
+    include '../View/Elements/footer.php';
 }
 else
 {

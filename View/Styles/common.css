@@ -6,6 +6,9 @@
 
 body {
     font-size: 62.5%;
+    background-image: url("../../5404580.jpg");
+    background-size: cover;
+    background-position: center;
 }
 
 /* Font */
