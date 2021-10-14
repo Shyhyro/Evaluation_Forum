@@ -15,6 +15,7 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
     $role = $roleManager->searchRole($user->getRoleFk());
 
     $userRole = $role->getId();
+    $userStatut = $user->getStatut();
 }
 
 ?>

@@ -12,7 +12,25 @@ class SubjectManager
     public function getAllSubjectOfCategory($categoryId): ?array
     {
         $array = [];
-        $stmt = Database::getInstance()->prepare("SELECT * FROM subject WHERE category_fk = :categoryId");
+        $stmt = Database::getInstance()->prepare("SELECT * FROM subject WHERE category_fk = :categoryId ORDER BY registration DESC ");
+        $stmt->bindValue(':categoryId', $categoryId);
+
+        if($stmt->execute() && $subjectDatas = $stmt->fetchAll()) {
+            foreach ($subjectDatas as $subjectData) {
+                $array[] = new Subject($subjectData['id'], $subjectData['statut'], $subjectData['registration'], $subjectData['user_fk'], $subjectData['category_fk'],
+                    $subjectData['name'], $subjectData['description'], $subjectData['content']);
+            }
+        }
+        return $array;
+    }
+
+    /**
+     * Get recent all Subject of a category
+     */
+    public function getRecentSubjectOfCategory($categoryId): ?array
+    {
+        $array = [];
+        $stmt = Database::getInstance()->prepare("SELECT * FROM subject WHERE category_fk = :categoryId ORDER BY registration DESC LIMIT 3");
         $stmt->bindValue(':categoryId', $categoryId);
 
         if($stmt->execute() && $subjectDatas = $stmt->fetchAll()) {

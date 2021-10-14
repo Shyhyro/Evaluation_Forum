@@ -43,7 +43,7 @@ if (isset($session))
                 <tr>
                     <td><?= $oneCategory->getId() ?></td>
                     <td><?= $oneCategory->getName() ?></td>
-                    <td><a href="#"><button class="red">Delete</button></a></td>
+                    <td><a href="../Controller/CategoryDeleteController.php?error=0&category=<?=$oneCategory->getId()?>"><button class="red">Delete</button></a></td>
                 </tr>
                 <?php
                 }
@@ -89,7 +89,7 @@ if (isset($session))
                     </td>
                     <td><?=$roleManager->searchRole($oneUser->getRoleFk())->getName() ?></td>
                     <td><?=$oneUser->getRegistration() ?></td>
-                    <td><a href="#"><button class="red">Delete</button></a></td>
+                    <td><a href="../Controller/UserDeleteController.php?error=0&user=<?=$oneUser->getId()?>"><button class="red">Delete</button></a></td>
                 </tr>
                     <?php
                 }

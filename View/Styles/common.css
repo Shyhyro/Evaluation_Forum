@@ -43,7 +43,7 @@ body {
 
 /* Padding */
 h1, #header_logIn_Logout {
-    padding: 20px 0;
+    padding: 15px 0;
 }
 
 /* --- Header --- */
@@ -57,7 +57,7 @@ nav {
 }
 
 nav a {
-    margin: 0 35px;
+    margin: 0 30px;
     padding: 10px 20px;
 }
 
@@ -80,7 +80,8 @@ footer {
 
 /* --- Container --- */
 .section_1 {
-    margin: 50px 20%;
+    margin: 50px auto;
+    width: 80%;
 }
 
 .newPost {
@@ -94,7 +95,7 @@ footer {
 }
 
 .section_1 .subject {
-    margin: 30px 0;
+    margin: 20px 0;
 }
 
 /* --- Input / Button --- */
@@ -116,4 +117,10 @@ button {
     top: 0;
     left: 0;
     padding: 10px 10px;
+}
+
+@media screen and (max-width: 1000px){
+    .section_1 {
+        width: 95%;
+    }
 }

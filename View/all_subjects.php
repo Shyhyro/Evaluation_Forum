@@ -13,23 +13,11 @@ if (isset($_GET['category'])) {
     <section class="section_1">
         <div class="category">
             <h2><?=$categoryManager->searchCategory($_GET['category'])->getName() ?></h2>
-            <div>
                 <?php
                 if (isset($session))
                 {
-                    // JUST Admin → modification, archiver, delete → Category
-                    if ($userRole === 1)
-                    {
-                    //<a href="#"><button type="button" class="orange">Modifier</button></a>
-                    ?>
-                    <a href="#"><button type="button" class="red">Supprimer</button></a>
-                    <?php
-                    }
-                ?>
-            </div>
-                <?php
-                // Admin, Modo & User → Create a new post in this category
-                    if ($userRole === 1 || $userRole === 2 || $userRole === 3)
+                    // Admin, Modo & User → Create a new post in this category
+                    if (($userRole === 1 || $userRole === 2 || $userRole === 3) && $userStatut === 1)
                     {
                     ?>
                     <a href="../View/new_post.php"><button type="button" class="newPost green">New Post</button></a>
@@ -50,7 +38,20 @@ if (isset($_GET['category'])) {
                 {
                     ?>
                     <div class="subject">
-                        <h3><a href="../View/one_post.php?sujet=<?=$oneSubject->getId() ?>"><?= $oneSubject->getName() ?></a></h3>
+                        <h3>
+                            <a href="../View/one_post.php?sujet=<?=$oneSubject->getId() ?>"><?= $oneSubject->getName() ?>
+                                <?php
+                                if ($oneSubject->getStatut() === 2)
+                                {
+                                    echo ' [Clôturé]';
+                                }
+                                else if ($oneSubject->getStatut() === 1)
+                                {
+                                    echo '[Ouvert]';
+                                }
+                                ?>
+                            </a>
+                        </h3>
                         <div>
                             <?php
                             if (isset($session))

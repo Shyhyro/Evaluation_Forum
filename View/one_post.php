@@ -26,7 +26,19 @@ if (isset($_GET['sujet'])) {
 
             $Subjects = $subjectManager->getSubjectById($sujet);
 ?>
-                    <h3><?= $Subjects->getName() ?></h3>
+                    <h3>
+                        <?= $Subjects->getName() ?>
+                        <?php
+                        if ($Subjects->getStatut() === 2)
+                        {
+                            echo ' [Clôturé]';
+                        }
+                        else if ($Subjects->getStatut() === 1)
+                        {
+                            echo '[Ouvert]';
+                        }
+                        ?>
+                    </h3>
                     <div>
                         <?php
                         if (isset($session))
@@ -61,8 +73,8 @@ if (isset($_GET['sujet'])) {
                         }
                         ?>
                     </div>
-            <p><?=$Subjects->getDescription() ?></p>
-            <p><?=$Subjects->getContent() ?></p>
+            <p class="subjects"><?=$Subjects->getDescription() ?></p>
+            <p class="subject"><?=$Subjects->getContent() ?></p>
             <span>By <?=$userManager->searchUserById($Subjects->getUserFk())->getUsername() ?></span>
         </div>
     </section>
@@ -108,7 +120,7 @@ if (isset($_GET['sujet'])) {
             <?php
             if ($session)
             {
-                if ($Subjects->getStatut() === 1) {
+                if ($Subjects->getStatut() === 1 && $userStatut === 1) {
                     ?>
                     <div class="subject">
                         <form name="new_commentary" method="post" action="../Controller/CommentaryCreateController.php?error=0&post=<?=$sujet?>">
