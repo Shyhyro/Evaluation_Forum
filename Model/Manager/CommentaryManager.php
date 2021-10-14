@@ -13,8 +13,27 @@ class CommentaryManager
      */
     public function getCommentary($subjectId):array
     {
-        $stmt = Database::getInstance()->prepare("SELECT * FROM commentary WHERE subject_fk = :subjectId AND statut = 1");
+        $stmt = Database::getInstance()->prepare("SELECT * FROM commentary WHERE subject_fk = :subjectId AND statut = (1 || 3)");
         $stmt->bindValue(':subjectId', $subjectId);
+        $state = $stmt->execute();
+        $comments = [];
+        if ($state)
+        {
+            foreach ($stmt->fetchAll() as $commentary)
+            {
+                $comments [] = new Commentary($commentary['id'], $commentary['statut'], $commentary['user_fk'], $commentary['subject_fk'], $commentary['content']);
+            }
+        }
+        return $comments;
+    }
+
+    /**
+     * Get all signal commentary
+     * @return array
+     */
+    public function getSignalCommentary():array
+    {
+        $stmt = Database::getInstance()->prepare("SELECT * FROM commentary WHERE statut = 3");
         $state = $stmt->execute();
         $comments = [];
         if ($state)
@@ -57,6 +76,30 @@ class CommentaryManager
         return $stmt->execute();
     }
 
+    /**
+     * Signal a commentary
+     * @param $commentaryId
+     * @return bool
+     */
+    public function signalCommentary($commentaryId): bool
+    {
+        $stmt = Database::getInstance()->prepare("UPDATE commentary SET statut = 3 WHERE id = :commentaryId");
+        $stmt->bindValue(':commentaryId', $commentaryId);
 
+        return $stmt->execute();
+    }
+
+    /**
+     * Good commentary
+     * @param $commentaryId
+     * @return bool
+     */
+    public function goodCommentary($commentaryId): bool
+    {
+        $stmt = Database::getInstance()->prepare("UPDATE commentary SET statut = 1 WHERE id = :commentaryId");
+        $stmt->bindValue(':commentaryId', $commentaryId);
+
+        return $stmt->execute();
+    }
 
 }

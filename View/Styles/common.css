@@ -98,6 +98,10 @@ footer {
     margin: 20px 0;
 }
 
+td, th {
+    padding: 5px 10px;
+}
+
 /* --- Input / Button --- */
 input, button {
     margin: 5px 25px;

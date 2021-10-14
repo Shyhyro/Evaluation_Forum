@@ -43,6 +43,12 @@ if (isset($_GET['sujet'])) {
                         <?php
                         if (isset($session))
                         {
+                            if (($userRole === 1 || $userRole === 2 || $userRole === 3) && $user->getId() !== $Subjects->getUserFk())
+                            {
+                                ?>
+                                <a href="../Controller/SubjectSignalController.php?subject=<?=$Subjects->getId()?>"><button class="red">Signaler!</button></a>
+                                <?php
+                            }
                             // Admin, Modo & User creator → modifier → subject
                             if ($userRole === 1 || $userRole === 2 || $user->getId() === $Subjects->getUserFk() )
                             {
@@ -103,10 +109,17 @@ if (isset($_GET['sujet'])) {
                             }
                         }
 
-                        if ($userRole === 1 || $user->getId() === $Subjects->getUserFk() )
+                        if ($userRole === 1 || $user->getId() === $com->getUserFk() )
                         {
                             ?>
                             <a href="../Controller/CommentaryDeleteController.php?error=0&post=<?=$sujet?>&commentary=<?=$com->getId()?>"><button type="button" class="red">Supprimer</button></a>
+                            <?php
+                        }
+
+                        if (($userRole === 1 || $userRole === 2 || $userRole === 3) && $user->getId() !== $com->getUserFk())
+                        {
+                            ?>
+                            <a href="../Controller/CommentarySignalController.php?error=0&commentary=<?=$com->getId()?>&subject=<?=$Subjects->getId()?>"><button class="red">Signaler!</button></a>
                             <?php
                         }
                     }

@@ -116,7 +116,7 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
                 <div id="header_Logout">
                     <p>Hello <?= $role->getName() . ' ' . $user->getUsername() ?>!</p>
                     <?php
-                    if ($userRole === 1)
+                    if ($userRole === 1 || $userRole === 2)
                     {
                     ?>
                     <a href="../View/Administration.php"><button type="button" class="green">Administration</button></a>

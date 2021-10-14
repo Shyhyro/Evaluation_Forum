@@ -25,6 +25,23 @@ class SubjectManager
     }
 
     /**
+     * Get all bad Subject
+     */
+    public function getAllBadSubject(): ?array
+    {
+        $array = [];
+        $stmt = Database::getInstance()->prepare("SELECT * FROM subject WHERE statut = 3 ");
+
+        if($stmt->execute() && $subjectDatas = $stmt->fetchAll()) {
+            foreach ($subjectDatas as $subjectData) {
+                $array[] = new Subject($subjectData['id'], $subjectData['statut'], $subjectData['registration'], $subjectData['user_fk'], $subjectData['category_fk'],
+                    $subjectData['name'], $subjectData['description'], $subjectData['content']);
+            }
+        }
+        return $array;
+    }
+
+    /**
      * Get recent all Subject of a category
      */
     public function getRecentSubjectOfCategory($categoryId): ?array
@@ -115,6 +132,32 @@ class SubjectManager
     {
         $stmt = Database::getInstance()->prepare("UPDATE subject SET statut = :statut WHERE id = :subjectId ");
         $stmt->bindValue(':statut', $statut);
+        $stmt->bindValue(':subjectId', $subjectId);
+
+        return $stmt->execute();
+    }
+
+    /**
+     * bad subjects
+     * @param $subjectId
+     * @return bool
+     */
+    public function badSubject($subjectId) :bool
+    {
+        $stmt = Database::getInstance()->prepare("UPDATE subject SET statut = 3 WHERE id = :subjectId ");
+        $stmt->bindValue(':subjectId', $subjectId);
+
+        return $stmt->execute();
+    }
+
+    /**
+     * good subjects
+     * @param $subjectId
+     * @return bool
+     */
+    public function goodSubject($subjectId) :bool
+    {
+        $stmt = Database::getInstance()->prepare("UPDATE subject SET statut = 1 WHERE id = :subjectId ");
         $stmt->bindValue(':subjectId', $subjectId);
 
         return $stmt->execute();

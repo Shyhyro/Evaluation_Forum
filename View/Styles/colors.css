@@ -66,8 +66,8 @@ button:hover {
     cursor: pointer;
 }
 
-a {
-    text-decoration: none;
+a:hover {
+    text-decoration: underline overline mediumpurple double 2px;
 }
 
 /* --- Alert color --- */
