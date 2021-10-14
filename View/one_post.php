@@ -37,7 +37,7 @@ if (isset($_GET['sujet'])) {
                                 if ($Subjects->getStatut() === 1)
                                 {
                             ?>
-                            <a href="../View/new_post.php?subject=<?=$Subjects->getId()?>"><button type="button" class="orange">Modifier</button></a>
+                            <a href="../View/change_post.php?subject=<?=$Subjects->getId()?>"><button type="button" class="orange">Modifier</button></a>
                             <?php
                                 }
                             }
@@ -85,8 +85,8 @@ if (isset($_GET['sujet'])) {
                         {
                             if ($Subjects->getStatut() === 1)
                             {
+                                //<a href="#"><button type="button" class="orange">Modifier</button></a>
                         ?>
-                        <a href="#"><button type="button" class="orange">Modifier</button></a>
                         <?php
                             }
                         }

@@ -19,10 +19,10 @@ if (isset($session, $_GET['subject']) )
 
     <section class="section_1">
         <div class="category">
-            <h2>Create a new Post</h2>
+            <h2>Modification d'un sujet:</h2>
         </div>
-        <form id="new_post" name="NewPost" method="post" action="../Controller/SubjectCreateController.php?error=0">
-            <p><?=$categoriesManager->searchCategory($Subjects->getCategoryFk())->getName() ?></p>
+        <form id="new_post" name="NewPost" method="post" action="../Controller/SubjectModificationController.php?error=0&subject=<?=$Subjects->getId()?>">
+            <p>[<?=$categoriesManager->searchCategory($Subjects->getCategoryFk())->getName() ?>]</p>
 
             <label for="newPost_name">Titre:</label>
             <input id="newPost_name" type="text" name="name" required maxlength="45" value="<?=$Subjects->getName() ?>">

@@ -134,4 +134,23 @@ class SubjectManager
         return $subjects;
     }
 
+    /**
+     * update a subjects
+     * @param $subjectId
+     * @param $name
+     * @param $description
+     * @param $content
+     * @return bool
+     */
+    public function updateSubject($subjectId, $name, $description, $content) :bool
+    {
+        $stmt = Database::getInstance()->prepare("UPDATE subject SET name = :name, description = :description, content = :content WHERE id = :subjectId ");
+        $stmt->bindValue(':name', $name);
+        $stmt->bindValue(':description', $description);
+        $stmt->bindValue(':content', $content);
+        $stmt->bindValue(':subjectId', $subjectId);
+
+        return $stmt->execute();
+    }
+
 }

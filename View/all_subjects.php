@@ -20,8 +20,8 @@ if (isset($_GET['category'])) {
                     // JUST Admin → modification, archiver, delete → Category
                     if ($userRole === 1)
                     {
+                    //<a href="#"><button type="button" class="orange">Modifier</button></a>
                     ?>
-                    <a href="#"><button type="button" class="orange">Modifier</button></a>
                     <a href="#"><button type="button" class="red">Supprimer</button></a>
                     <?php
                     }
@@ -59,7 +59,7 @@ if (isset($_GET['category'])) {
                                 if ($userRole === 1 || $userRole === 2 || $user->getId() === $oneSubject->getUserFk() )
                                 {
                                 ?>
-                                <a href="../View/new_post.php?subject=<?=$oneSubject->getId()?>"><button type="button" class="orange">Modifier</button></a>
+                                <a href="../View/change_post.php?subject=<?=$oneSubject->getId()?>"><button type="button" class="orange">Modifier</button></a>
                                 <?php
                                 }
                                 // Admin & Modo -> Archiver -> Subject

@@ -16,12 +16,12 @@ body,.section_1 .subject {
     background-color: #f2eded;
 }
 
-.section_1 {
-    background-color: #a8d2ac;
+.category {
+    background-color: rgba(233,231,148,1);
 }
 
-.category {
-    background: rgba(233,231,148,1);
+.section_1 {
+    background-color: #a8d2ac;
 }
 
 button {
@@ -55,6 +55,10 @@ header {
 
 footer {
     border-top: #a8d2ac solid 4px;
+}
+
+.section_1 {
+    box-shadow: #272323 0 0 1rem;
 }
 
 /* --- Others ---*/

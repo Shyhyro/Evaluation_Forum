@@ -24,8 +24,8 @@ foreach ($allCategory as $oneCategory) {
                 {
                     if ($userRole === 1)
                     {
+                        //<a href="#"><button type="button" class="orange">Modifier</button></a>
                         ?>
-                        <a href="#"><button type="button" class="orange">Modifier</button></a>
                         <a href="#"><button type="button" class="red">Supprimer</button></a>
                         <?php
                     }
@@ -50,6 +50,11 @@ foreach ($allCategory as $oneCategory) {
             ?>
             <div class="subject">
                 <h3><a href="../View/one_post.php?sujet=<?=$oneSubject->getId() ?>"><?= $oneSubject->getName() ?></a></h3>
+                <?php
+                if ($oneSubject->getStatut() === 2) {
+                    echo '<p>Sujet clôturé.</p>';
+                }
+                ?>
                 <div>
                 <?php
                     if (isset($session))
