@@ -1,5 +1,6 @@
 <?php
 namespace Bosqu\EvaluationForum\Controller;
+use Bosqu\EvaluationForum\Model\Manager\TokenManager;
 use Bosqu\EvaluationForum\Model\Manager\UserManager;
 
 require_once "requires.php";
@@ -45,6 +46,26 @@ else
 
                     if ($addUser)
                     {
+                        $searchUser = new UserManager();
+                        $userId = $searchUser->searchUser($username)->getId();
+                        $token = new TokenManager();
+
+                        $tokenController = new TokenController();
+                        $tokenGenerate = $tokenController->generate();
+
+                        $token = $token->addUser($userId, $tokenGenerate);
+
+                        //$sendMail = $tokenController->sendToken($searchUser->searchUser($username)->getEmail(), $tokenGenerate);
+
+                        if ($token /*&& $sendMail*/)
+                        {
+                            header("location: ../View/index.php?statut=create&token=$userId");
+                        }
+                        else
+                        {
+                            header("location: ../View/login_register.php?error=tokenNoCreate");
+                        }
+
                         header("location: ../View/index.php?statut=create");
                     }
                     else

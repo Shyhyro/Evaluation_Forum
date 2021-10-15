@@ -1,6 +1,7 @@
 <?php
 
 use Bosqu\EvaluationForum\Model\Manager\RoleManager;
+use Bosqu\EvaluationForum\Model\Manager\TokenManager;
 use Bosqu\EvaluationForum\Model\Manager\UserManager;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/Controller/requires.php";
@@ -40,57 +41,47 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
         <?php
         if (isset($_GET['error']))
         {
-            if ($_GET['error'] === 'errorIsComing')
+            $error = $_GET['error'];
+
+            switch ($error)
             {
-                ?>
-                <div id="header_message" class="red">Une erreur est survenus!</div>
-                <?php
-            }
-            if ($_GET['error'] === 'easyPassword')
-            {
-                ?>
-                <div id="header_message" class="red">
-                    Mots de passe trop simple.<br>
-                    Le mots de passe doit contenir une majuscule, une minuscule, <br>
-                    un caractère spécial, un chiffre et avoir une longueur minimum de 8.
-                </div>
-                <?php
-            }
-            if ($_GET['error'] === 'passwordEmail')
-            {
-                ?>
-                <div id="header_message" class="red">Mots de passe différents et/ou Email différents.</div>
-                <?php
-            }
-            if ($_GET['error'] === 'utilisateurExistant')
-            {
-                ?>
-                <div id="header_message" class="orange">Username existant</div>
-                <?php
-            }
-            if ($_GET['error'] === 'missingUser')
-            {
-                ?>
-                <div id="header_message" class="orange">Username inexistant ou incorrect!</div>
-                <?php
-            }
-            if ($_GET['error'] === 'dataMissing')
-            {
-                ?>
-                <div id="header_message" class="orange">Donnée(s) Manquante(s)!</div>
-                <?php
+                case 'errorIsComing':
+                    echo '<div id="header_message" class="red">Une erreur est survenus!</div>';
+                    break;
+                case 'easyPassword':
+                    echo '<div id="header_message" class="red"> Mots de passe trop simple.<br>
+                         Le mots de passe doit contenir une majuscule, une minuscule, <br>
+                         un caractère spécial, un chiffre et avoir une longueur minimum de 8.
+                         </div>';
+                    break;
+                case 'passwordEmail':
+                    echo '<div id="header_message" class="red">Mots de passe différents et/ou Email différents.</div>';
+                    break;
+                case 'utilisateurExistant':
+                    echo '<div id="header_message" class="orange">Username existant</div>';
+                    break;
+                case 'missingUser':
+                    echo '<div id="header_message" class="orange">Username inexistant ou incorrect!</div>';
+                    break;
+                case 'dataMissing':
+                    echo '<div id="header_message" class="orange">Donnée(s) Manquante(s)!</div>';
+                    break;
             }
         }
         ?>
         <?php
         if (isset($_GET['statut']))
         {
-            if ($_GET['statut'] === 'create')
+            if ($_GET['statut'] === 'create' && isset($_GET['token']))
             {
+                $token = $_GET['token'];
+                $tokenManager = new TokenManager();
+                $tokenUser = $tokenManager->searchToken($token);
                 ?>
                 <div id="header_message" class="green">
                     Compte créer!<br>En attente de validation.<br>Un email vous à été envoyer pour confirmation.<br>
                     Token de validation:
+                    <a href="../../Controller/TokenValidationController.php?token=<?=$tokenUser->getToken()?>">Valider mon compte!</a>
                 </div>
                 <?php
             }

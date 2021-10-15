@@ -97,4 +97,17 @@ class UserManager
         return $stmt->execute();
     }
 
+    /**
+     * statut a user
+     * @param $userId
+     * @return bool
+     */
+    public function statutUser($userId) :bool
+    {
+        $stmt = Database::getInstance()->prepare("UPDATE user SET statut = 1 WHERE id = :userId ");
+        $stmt->bindValue(':userId', $userId);
+
+        return $stmt->execute();
+    }
+
 }

@@ -14,7 +14,7 @@ body {
 
 /* Font */
 #bodyDiv {
-    font-family: "Comic Sans MS", sans-serif;
+    font-family: "MS Outlook", sans-serif;
 }
 
 #bodyDiv, input, button {
@@ -100,6 +100,7 @@ footer {
 
 td, th {
     padding: 5px 10px;
+    text-align: center;
 }
 
 /* --- Input / Button --- */

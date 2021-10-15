@@ -33,8 +33,8 @@ if (isset($session))
             </div>
             <table>
                 <tr>
-                    <th>Id</th>
-                    <th>Name</th>
+                    <th>Identifiant</th>
+                    <th>Titre</th>
                     <th>Actions</th>
                 </tr>
                     <?php
@@ -63,10 +63,10 @@ if (isset($session))
             </div>
             <table>
                 <tr>
-                    <th>Id</th>
+                    <th>Identifiant</th>
                     <th>Username</th>
                     <th>Statut</th>
-                    <th>Registration</th>
+                    <th>Enregistrement</th>
                     <th>Role</th>
                     <th>Actions</th>
                 </tr>
@@ -89,8 +89,8 @@ if (isset($session))
                         }
                         ?>
                     </td>
-                    <td><?=$roleManager->searchRole($oneUser->getRoleFk())->getName() ?></td>
                     <td><?=$oneUser->getRegistration() ?></td>
+                    <td><?=$roleManager->searchRole($oneUser->getRoleFk())->getName() ?></td>
                     <td><a href="../Controller/UserDeleteController.php?error=0&user=<?=$oneUser->getId()?>"><button class="red">Delete</button></a></td>
                 </tr>
                     <?php
@@ -111,7 +111,7 @@ if (isset($session))
         </div>
         <table>
             <tr>
-                <th>User</th>
+                <th>Utilisateur</th>
                 <th>Sujet</th>
                 <th>Content</th>
                 <th>Actions</th>
@@ -147,7 +147,7 @@ if (isset($session))
             </div>
             <table>
                 <tr>
-                    <th>User</th>
+                    <th>Utilisateur</th>
                     <th>Sujet</th>
                     <th>Content</th>
                     <th>Actions</th>

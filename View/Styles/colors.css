@@ -3,7 +3,7 @@ header, h1 a, button, footer, #header_Logout a, #header_Logout{
     color: #e3e3e3;
 }
 
-button:hover, a,  #header_Logout button:hover a {
+button:hover, a,  #header_Logout button:hover a, #header_message:hover {
     color: #272323;
 }
 
@@ -13,19 +13,23 @@ header, footer {
 }
 
 body,.section_1 .subject {
-    background-color: #f2eded;
+    background-color: #e3e3e3;
 }
 
 .category {
-    background-color: rgba(233,231,148,1);
+    background-color: #a8d2ac;
 }
 
 .section_1 {
-    background-color: #a8d2ac;
+    background-color: #f2eded;
 }
 
 button {
     background-color: #272323;
+}
+
+tr:nth-child(even) {
+    background-color: #e3e3e3;
 }
 
 /* --- Border / Shadow --- */
@@ -67,7 +71,7 @@ button:hover {
 }
 
 a:hover {
-    text-decoration: underline overline mediumpurple double 2px;
+    color: #69996a;
 }
 
 /* --- Alert color --- */
