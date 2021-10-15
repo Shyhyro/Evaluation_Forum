@@ -24,7 +24,7 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
 
         if ($addSujet)
         {
-            header("location: ../View/index.php?statut=sujetCréer");
+            header("location: ../View/index.php?action=subjectCreate");
         }
         else
         {

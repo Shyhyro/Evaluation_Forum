@@ -57,16 +57,7 @@ else
 
                         //$sendMail = $tokenController->sendToken($searchUser->searchUser($username)->getEmail(), $tokenGenerate);
 
-                        if ($token /*&& $sendMail*/)
-                        {
-                            header("location: ../View/index.php?statut=create&token=$userId");
-                        }
-                        else
-                        {
-                            header("location: ../View/login_register.php?error=tokenNoCreate");
-                        }
-
-                        header("location: ../View/index.php?statut=create");
+                        header("location: ../View/index.php?statut=create&token=$userId");
                     }
                     else
                     {

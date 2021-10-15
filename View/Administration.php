@@ -68,6 +68,7 @@ if (isset($session))
                     <th>Statut</th>
                     <th>Enregistrement</th>
                     <th>Role</th>
+                    <th>Email</th>
                     <th>Actions</th>
                 </tr>
                 <?php
@@ -91,6 +92,7 @@ if (isset($session))
                     </td>
                     <td><?=$oneUser->getRegistration() ?></td>
                     <td><?=$roleManager->searchRole($oneUser->getRoleFk())->getName() ?></td>
+                    <td><?=$oneUser->getEmail()?></td>
                     <td><a href="../Controller/UserDeleteController.php?error=0&user=<?=$oneUser->getId()?>"><button class="red">Delete</button></a></td>
                 </tr>
                     <?php

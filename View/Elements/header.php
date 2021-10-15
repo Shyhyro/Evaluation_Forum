@@ -68,34 +68,65 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
                     break;
             }
         }
-        ?>
-        <?php
-        if (isset($_GET['statut']))
+
+        if (isset($_GET['statut'], $_GET['token']))
         {
-            if ($_GET['statut'] === 'create' && isset($_GET['token']))
+            $token = $_GET['token'];
+            $tokenManager = new TokenManager();
+            $tokenUser = $tokenManager->searchToken($token);
+            ?>
+        <div id="header_message" class="green">
+            Compte créer!<br>En attente de validation.<br>Un email vous à été envoyer pour confirmation.<br>
+            Token de validation:
+            <a href="../../Controller/TokenValidationController.php?token=<?=$tokenUser->getToken()?>">Valider mon compte!</a>
+        </div>
+        <?php
+        }
+        else if (isset($_GET['statut']))
+        {
+            $statut = $_GET['statut'];
+
+            switch ($statut)
             {
-                $token = $_GET['token'];
-                $tokenManager = new TokenManager();
-                $tokenUser = $tokenManager->searchToken($token);
-                ?>
-                <div id="header_message" class="green">
-                    Compte créer!<br>En attente de validation.<br>Un email vous à été envoyer pour confirmation.<br>
-                    Token de validation:
-                    <a href="../../Controller/TokenValidationController.php?token=<?=$tokenUser->getToken()?>">Valider mon compte!</a>
-                </div>
-                <?php
+                case 'online':
+                    echo '<div id="header_message" class="green">Vous êtes en ligne!</div>';
+                    break;
+                case 'offline':
+                    echo '<div id="header_message" class="red">Vous êtes hors ligne!</div>';
+                    break;
             }
-            if ($_GET['statut'] === 'online')
+        }
+
+        if (isset($_GET['action']))
+        {
+            $action = $_GET['action'];
+
+            switch ($action)
             {
-                ?>
-                <div id="header_message" class="green">Vous êtes en ligne!</div>
-                <?php
-            }
-            if ($_GET['statut'] === 'offline')
-            {
-                ?>
-                <div id="header_message" class="red">Vous êtes hors ligne!</div>
-                <?php
+                // Category
+                case 'categoryCreate':
+                    echo '<div id="header_message" class="green">La catégorie à étais créer!</div>';
+                    break;
+                case 'categoryDelete':
+                    echo '<div id="header_message" class="red">La catégorie à étais supprimer!</div>';
+                    break;
+                case 'commentaryCreate':
+                    echo '<div id="header_message" class="green">Commentaire publié!</div>';
+                    break;
+                case 'commentaryDelete':
+                    echo '<div id="header_message" class="red">Commentaire supprimer!</div>';
+                    break;
+                // Commentary
+                case 'goodCommentary':
+                    echo '<div id="header_message" class="green">Commentaire vérifié!</div>';
+                    break;
+                case 'commentarySignal':
+                    echo '<div id="header_message" class="orange">Commentaire signalé!</div>';
+                    break;
+                // Subject
+                case 'subjectCreate':
+                    echo '<div id="header_message" class="green">Sujet créer!</div>';
+                    break;
             }
         }
         ?>

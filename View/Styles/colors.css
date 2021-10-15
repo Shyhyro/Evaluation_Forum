@@ -32,6 +32,10 @@ tr:nth-child(even) {
     background-color: #e3e3e3;
 }
 
+tr:hover {
+    background-color: rgba(125, 180, 230, 0.4);
+}
+
 /* --- Border / Shadow --- */
 nav a {
     border: solid 2px #272323;

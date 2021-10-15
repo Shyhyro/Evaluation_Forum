@@ -23,7 +23,7 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key'], $_GET['post'
 
         if ($addCommentary)
         {
-            header("location: ../View/one_post.php?sujet=$post");
+            header("location: ../View/one_post.php?sujet=$post&action=commentaryCreate");
         }
         else
         {

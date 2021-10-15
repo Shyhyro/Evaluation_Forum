@@ -6,10 +6,11 @@
 
 body {
     font-size: 62.5%;
-    background-image: url("../../5404580.jpg");
+    background-image: url("../../icons/5404580.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    backdrop-filter: blur(1px);
 }
 
 /* Font */
@@ -31,14 +32,26 @@ body {
     height: 100%;
 }
 
-/* Display */
-#header_logIn_Logout, #header_Logout, #header_Register {
+/* Display / Position / Flex */
+#header_logIn_Logout, #header_Logout, #header_Register, nav, #register, #new_post {
     display: flex;
+}
+
+#header_logIn_Logout, #header_Logout, #header_Register, #register, #new_post {
     flex-direction: column;
+}
+
+nav {
+    justify-content: center;
 }
 
 #header_Logout, #header_Register {
     align-items: center;
+}
+
+/* Text Align */
+header, footer, td, th {
+    text-align: center;
 }
 
 /* Padding */
@@ -46,32 +59,19 @@ h1, #header_logIn_Logout {
     padding: 15px 0;
 }
 
-/* --- Header --- */
-header {
-    text-align: center;
-}
-
-nav {
-    display: flex;
-    justify-content: center;
-}
-
+/* --- Header / Footer --- */
 nav a {
     margin: 0 30px;
     padding: 10px 20px;
 }
 
-/* --- Footer --- */
 footer {
     padding: 20px 10px;
-    text-align: center;
 }
 
 /* --- Login - Register --- */
 #register, #new_post {
     padding: 25px 50px;
-    display: flex;
-    flex-direction: column;
 }
 
 #register input, #register button, #new_post input {
@@ -100,15 +100,16 @@ footer {
 
 td, th {
     padding: 5px 10px;
-    text-align: center;
 }
 
-/* --- Input / Button --- */
+/* --- Input / Button / Alert message --- */
 input, button {
+    font-size: 13px;
+    font-weight: bold;
     margin: 5px 25px;
 }
 
-input, select {
+input, select, #header_message {
     padding: 10px 10px;
 }
 
@@ -116,12 +117,10 @@ button {
     padding: 10px 30px;
 }
 
-/* Alert message */
 #header_message {
     position: absolute;
     top: 0;
     left: 0;
-    padding: 10px 10px;
 }
 
 @media screen and (max-width: 1000px){

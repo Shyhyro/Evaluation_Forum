@@ -21,7 +21,7 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
 
         if ($addCategory)
         {
-            header("location: ../View/Administration.php?statut=categoryCreate");
+            header("location: ../View/Administration.php?action=categoryCreate");
         }
         else
         {

@@ -16,7 +16,7 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key'], $_GET['comme
 
     if ($changeSubject)
     {
-        header("location: ../View/one_post.php?sujet=$subjectId");
+        header("location: ../View/one_post.php?sujet=$subjectId&action=commentarySignal");
     }
     else
     {
