@@ -79,7 +79,7 @@ a:hover {
 }
 
 /* --- Alert color --- */
-.red {
+.red, .noActivate {
     border: red solid 3px;
     color: red;
 }
@@ -97,7 +97,7 @@ a:hover {
     background-color: orange;
 }
 
-.green {
+.green, .activate {
     border: solid 3px limegreen;
     color: limegreen;
 }

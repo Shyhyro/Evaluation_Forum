@@ -78,18 +78,16 @@ if (isset($session))
                 <tr>
                     <td><?=$oneUser->getId() ?></td>
                     <td><?=$oneUser->getUsername() ?></td>
-                    <td>
-                        <?php
-                        if ($oneUser->getStatut() === 0)
-                        {
-                            echo 'Non activer';
-                        }
-                        if ($oneUser->getStatut() === 1)
-                        {
-                            echo 'Activer';
-                        }
-                        ?>
-                    </td>
+                    <?php
+                    if ($oneUser->getStatut() === 0)
+                    {
+                        echo '<td class="noActivate">Non activer</td>';
+                    }
+                    if ($oneUser->getStatut() === 1)
+                    {
+                        echo '<td class="activate">Activer</td>';
+                    }
+                    ?>
                     <td><?=$oneUser->getRegistration() ?></td>
                     <td><?=$roleManager->searchRole($oneUser->getRoleFk())->getName() ?></td>
                     <td><?=$oneUser->getEmail()?></td>
