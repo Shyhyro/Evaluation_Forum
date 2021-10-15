@@ -66,7 +66,7 @@ else
                 }
                 else
                 {
-                    header("location: ../View/login_register.php?error=utilisateurExistant");
+                    header("location: ../View/login_register.php?error=username");
                 }
             }
             else {

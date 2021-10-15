@@ -32,7 +32,7 @@ tr:nth-child(even) {
     background-color: #e3e3e3;
 }
 
-tr:hover {
+tr:hover td {
     background-color: rgba(125, 180, 230, 0.4);
 }
 

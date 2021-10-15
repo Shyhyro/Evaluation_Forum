@@ -39,6 +39,7 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
             <h1><a href="../View/index.php">Forum</a></h1>
         </div>
         <?php
+        // Error message
         if (isset($_GET['error']))
         {
             $error = $_GET['error'];
@@ -61,14 +62,18 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
                     echo '<div id="header_message" class="orange">Username existant</div>';
                     break;
                 case 'missingUser':
-                    echo '<div id="header_message" class="orange">Username inexistant ou incorrect!</div>';
+                    echo '<div id="header_message" class="orange">Utilisateur inexistant ou incorrect!</div>';
                     break;
                 case 'dataMissing':
                     echo '<div id="header_message" class="orange">Donnée(s) Manquante(s)!</div>';
                     break;
+                case 'username':
+                    echo "<div id='header_message' class='orange'>Utilisateur existant!</div>";
+                    break;
             }
         }
 
+        // Account create message
         if (isset($_GET['statut'], $_GET['token']))
         {
             $token = $_GET['token'];
@@ -94,6 +99,12 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
                 case 'offline':
                     echo '<div id="header_message" class="red">Vous êtes hors ligne!</div>';
                     break;
+                case 'validate':
+                    echo '<div id="header_message" class="green">Compte activé!</div>';
+                    break;
+                case 'noSession':
+                    echo "<div id='header_message' class='red'>Aucune session active!</div>";
+                    break;
             }
         }
 
@@ -110,13 +121,13 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
                 case 'categoryDelete':
                     echo '<div id="header_message" class="red">La catégorie à étais supprimer!</div>';
                     break;
+                // Commentary
                 case 'commentaryCreate':
                     echo '<div id="header_message" class="green">Commentaire publié!</div>';
                     break;
                 case 'commentaryDelete':
                     echo '<div id="header_message" class="red">Commentaire supprimer!</div>';
                     break;
-                // Commentary
                 case 'goodCommentary':
                     echo '<div id="header_message" class="green">Commentaire vérifié!</div>';
                     break;
@@ -126,6 +137,25 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
                 // Subject
                 case 'subjectCreate':
                     echo '<div id="header_message" class="green">Sujet créer!</div>';
+                    break;
+                case 'subjectDelete':
+                    echo '<div id="header_message" class="red">Sujet supprimer!</div>';
+                    break;
+                case 'goodSubject':
+                    echo '<div id="header_message" class="green">Sujet vérifié!</div>';
+                    break;
+                case 'subjectModification':
+                    echo '<div id="header_message" class="green">Sujet modifier!</div>';
+                    break;
+                case 'subjectSignal':
+                    echo '<div id="header_message" class="orange">Sujet signalé!</div>';
+                    break;
+                case 'subjectArchive':
+                    echo '<div id="header_message" class="green">Sujet Archivé!</div>';
+                    break;
+                // User
+                case 'userDelete':
+                    echo '<div id="header_message" class="red">Utilisateur supprimé!</div>';
                     break;
             }
         }

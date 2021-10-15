@@ -43,7 +43,7 @@ else
                     }
                     else
                     {
-                        header('location: ../View/index.php?statut=AucuneSessionCree');
+                        header('location: ../View/index.php?statut=noSession');
                     }
                 }
                 else {

@@ -12,5 +12,5 @@ if(isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key'])) {
 }
 else
 {
-    header("location:../View/index.php?error=NoSession");
+    header("location:../View/index.php?statut=noSession");
 }

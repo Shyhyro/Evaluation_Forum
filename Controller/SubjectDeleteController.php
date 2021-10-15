@@ -16,7 +16,7 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key'], $_GET['categ
 
     if ($deleteSubject)
     {
-        header("location: ../View/all_subjects.php?category=$category");
+        header("location: ../View/all_subjects.php?category=$category&action=subjectDelete");
     }
     else
     {
