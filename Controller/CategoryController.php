@@ -12,7 +12,7 @@ class CategoryController
      * @param $name
      * @return bool
      */
-    private function addCategory($name) :bool
+    public function addCategory($name) :bool
     {
         return (new CategoryManager())->createCategory(filter_var($name, FILTER_SANITIZE_STRING));
     }
@@ -22,7 +22,7 @@ class CategoryController
      * @param $id
      * @return bool
      */
-    private function removeCategory($id) :bool
+    public function removeCategory($id) :bool
     {
         return (new CategoryManager())->deleteCategory(filter_var($id, FILTER_SANITIZE_NUMBER_INT));
     }

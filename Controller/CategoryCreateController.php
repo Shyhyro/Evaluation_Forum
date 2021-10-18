@@ -22,8 +22,8 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
         $username = $user->searchUser($_SESSION['username'])->getUsername();
         $user = $user->searchUser($_SESSION['username'])->getId();
 
-        $category = new CategoryManager();
-        $addCategory = $category->createCategory($name);
+        $categoryController = new CategoryController();
+        $addCategory = $categoryController->addCategory($name);
 
         if ($addCategory)
         {

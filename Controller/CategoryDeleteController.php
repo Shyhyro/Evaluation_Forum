@@ -21,8 +21,8 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key'], $_GET['categ
     {
         $categoryId = $_GET['category'];
 
-        $category = new CategoryManager();
-        $deleteCategory = $category->deleteCategory($categoryId);
+        $categoryController = new CategoryController();
+        $deleteCategory = $categoryController->removeCategory($categoryId);
 
         if ($deleteCategory)
         {

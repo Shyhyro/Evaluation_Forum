@@ -5,8 +5,6 @@ use Bosqu\EvaluationForum\Model\Manager\CommentaryManager;
 use Bosqu\EvaluationForum\Model\Manager\RoleManager;
 use Bosqu\EvaluationForum\Model\Manager\SubjectManager;
 use Bosqu\EvaluationForum\Model\Manager\UserManager;
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
 
 include '../View/Elements/header.php';
 
@@ -21,15 +19,11 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
 
     $userRole = $role->getId();
 
-    $log = new Logger($_SESSION['username']);
-    $log->pushHandler(new StreamHandler('../log.txt', Logger::WARNING));
 }
 
 if (isset($session))
 {
     $categoryManager = new CategoryManager();
-
-    $log->warning('Enter in Administration panel.');
 
     if ($userRole === 1)
     {
