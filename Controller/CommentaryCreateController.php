@@ -4,12 +4,16 @@ namespace Bosqu\EvaluationForum\Controller;
 
 use Bosqu\EvaluationForum\Model\Manager\CommentaryManager;
 use Bosqu\EvaluationForum\Model\Manager\UserManager;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 require_once "requires.php";
 
 if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key'], $_GET['post']))
 {
     $post = $_GET['post'];
+    $log = new Logger($_SESSION['username']);
+    $log->pushHandler(new StreamHandler('../log.txt', Logger::WARNING));
 
     if (isset($_GET['error'], $_POST['content'], $_GET['post']) && $_GET['error'] === "0")
     {
@@ -23,6 +27,7 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key'], $_GET['post'
 
         if ($addCommentary)
         {
+            $log->warning('Create a new commentary.');
             header("location: ../View/one_post.php?sujet=$post&action=commentaryCreate");
         }
         else

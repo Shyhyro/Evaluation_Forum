@@ -2,6 +2,8 @@
 namespace Bosqu\EvaluationForum\Controller;
 use Bosqu\EvaluationForum\Model\Manager\SubjectManager;
 use Bosqu\EvaluationForum\Model\Manager\UserManager;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
 require_once "requires.php";
 
@@ -16,6 +18,9 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
         $description = strip_tags(trim($_POST['description']));
         $content = strip_tags(trim($_POST['content']));
 
+        $log = new Logger($_SESSION['username']);
+        $log->pushHandler(new StreamHandler('../log.txt', Logger::WARNING));
+
         $user = new UserManager();
         $user = $user->searchUser($_SESSION['username'])->getId();
 
@@ -24,6 +29,7 @@ if (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['key']))
 
         if ($addSujet)
         {
+            $log->warning('Create a new Subject.');
             header("location: ../View/index.php?action=subjectCreate");
         }
         else
